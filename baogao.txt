@@ -1,0 +1,2 @@
+学长好，我有一些疑问
+- 在 node 的 delete 中使用了 removeById，我查到这个是物理删除而不是逻辑删除，没有将delFlag 置为一的功能
