@@ -16,7 +16,7 @@ public class Adjust {
         result = result.replaceAll("\\*x\\^0","");
         result = result.replaceAll("x\\^0","1");
         result = result.replaceAll("x\\^1","x");
-        if (result.charAt(0) == '+') {
+        if (!result.isEmpty() && result.charAt(0) == '+') {
             result = result.substring(1);
         }
         return result;
