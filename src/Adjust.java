@@ -18,6 +18,8 @@ public class Adjust {
         result = result.replaceAll("x\\^1","x");
         if (!result.isEmpty() && result.charAt(0) == '+') {
             result = result.substring(1);
+        } else if (result.isEmpty()) {
+            return "0";
         }
         return result;
     }
