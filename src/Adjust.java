@@ -30,6 +30,11 @@ public class Adjust {
         } else if (exponent == 0) {
             return String.valueOf(coefficient); // 如果指数为0，只有系数
         } else if (exponent == 1) {
+            if (Objects.equals(coefficient, BigInteger.valueOf(1))) { // 指数为 1 且 系数为 1
+                return "x";
+            } else if (Objects.equals(coefficient, BigInteger.valueOf(-1))) {
+                return "-x";
+            }
             return coefficient + "*x";// 如果指数为 1 ，省略 ^1
         } else if (Objects.equals(coefficient, BigInteger.valueOf(1))) {
             return "x^" + exponent; // 系数为1，只输出指数
