@@ -53,7 +53,7 @@ public class Adjust {
             BigInteger coefficient = parseCoefficient(matcher.group(1));
             int exponent = Integer.parseInt(matcher.group(2));
             String simplifiedTerm = simplifyTerm(coefficient, exponent);
-            if (result.length() > 0) {
+            if (result.length() > 0 && !simplifiedTerm.isEmpty()) {
                 result.append(matcher.group(1).startsWith("-") ?
                         simplifiedTerm : ("+" + simplifiedTerm));
             } else {
