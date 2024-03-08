@@ -102,7 +102,11 @@ public class Poly implements Serializable { // 多项式
             sb.append("+");
             sb.append(mono.toString());
         }
-        return sb.toString();
+        String result = sb.toString();
+        if (result.charAt(0) == '+') {
+            result = result.substring(1);
+        }
+        return result;
     }
 
     @Override
