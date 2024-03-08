@@ -16,7 +16,6 @@ public class Main {
         Lexer lexer = new Lexer(inputInfo);
         Parser parser = new Parser(lexer);
         Expr expr = parser.parseExpr();
-        System.out.println(expr.toString());
         String result = Adjust.simplifyString(expr.toPoly().toString());
         System.out.println(result);
     }
