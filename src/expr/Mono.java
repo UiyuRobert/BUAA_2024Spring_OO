@@ -1,8 +1,12 @@
 package expr;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Mono implements Serializable { // 单项式类
@@ -19,13 +23,13 @@ public class Mono implements Serializable { // 单项式类
         // varAndExp.put(var, exp);
     }
 
-    public Mono (Poly poly) { // 只有 exp()^n 部分
+    public Mono(Poly poly) { // 只有 exp ()^n 部分
         this.expExp = poly;
         this.exp = 0;
         this.coe = BigInteger.ONE;
     }
 
-    public Mono (BigInteger coe, int exp, Poly poly) {
+    public Mono(BigInteger coe, int exp, Poly poly) {
         this.expExp = poly;
         this.exp = exp;
         this.coe = coe;
@@ -95,21 +99,15 @@ public class Mono implements Serializable { // 单项式类
             }
             return coe + "*x^" + exp;
         } else {
-//            ArrayList<Mono> tmpMonoList = expExp.getMonoList();
-//            if (tmpMonoList.size() == 1) { // exp(一项)
-//                String str = tmpMonoList.get(0).toString();
-//                if (str.equals("exp(0)")) {
-//                    return
-//                }
-//            }
             return coe + "*x^" + exp + "*" + "exp((" + expExp.toString() + "))";
         }
     }
 
     @Override
     public boolean equals(Object object) {
-        if (object instanceof Mono mono) {
-            if (Objects.equals(this.coe, mono.getCoe()) && this.exp == mono.getExp()) { // x^n 部分指数相同
+        if (object instanceof Mono) {
+            Mono mono = (Mono) object;
+            if (Objects.equals(this.coe, mono.getCoe()) && this.exp == mono.getExp()) { // x^n 指数相同
                 if (expExp.isPolyNull()) { // exp() 为空
                     return true;
                 }
