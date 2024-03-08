@@ -45,7 +45,7 @@ public class Definer { // 自定义函数的解析
         String regex = "\\b" + para + "\\b"; // 匹配非字母的 x
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(strReplaced);
-        StringBuilder result = new StringBuilder();
+        StringBuffer result = new StringBuffer();
         while (matcher.find()) {
             String replacement = "(" + replacementExpr + ")";
             matcher.appendReplacement(result, Matcher.quoteReplacement(replacement));
