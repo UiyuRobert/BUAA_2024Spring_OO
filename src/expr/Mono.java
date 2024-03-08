@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Mono implements Serializable { // 单项式类
@@ -83,24 +84,35 @@ public class Mono implements Serializable { // 单项式类
         if (Objects.equals(coe, BigInteger.ZERO)) {
             return "0";
         } else if (expExp.isPolyNull()) { // 如果没有exp()部分
-            if (exp == 0) { // 如果 a*x^n 的 n = 0
-                return coe.toString();
-            } else if (exp == 1) { // 指数为 1
-                if (coe.equals(BigInteger.ONE)) { // 系数为 1
-                    return "x";
-                } else if (Objects.equals(coe, BigInteger.valueOf(-1))) {
-                    return "-x";
-                }
-                return coe + "*x";
-            } else if (Objects.equals(coe, BigInteger.valueOf(1))) {
-                return "x^" + exp; // 系数为1，只输出指数
-            } else if (Objects.equals(coe, BigInteger.valueOf(-1))) {
-                return "-x^" + exp; // 系数为 -1，只输出指数
-            }
-            return coe + "*x^" + exp;
+            return simplifyFirstHalf();
         } else {
-            return coe + "*x^" + exp + "*" + "exp((" + expExp.toString() + "))";
+            ArrayList<Mono> tmpMonoList = expExp.getMonoList();
+            if (tmpMonoList.size() == 1) { // exp(一项)
+                String str = tmpMonoList.get(0).toString();
+                if (str.equals("exp(0)") || str.equals("exp(+0)") || str.equals("exp(-0)")) {
+                    return simplifyFirstHalf();
+                }
+            }
+            return simplifyFirstHalf() + "*" + "exp((" + expExp.toString() + "))";
         }
+    }
+
+    public String simplifyFirstHalf() {
+        if (exp == 0) { // 如果 a*x^n 的 n = 0
+            return coe.toString();
+        } else if (exp == 1) { // 指数为 1
+            if (coe.equals(BigInteger.ONE)) { // 系数为 1
+                return "x";
+            } else if (Objects.equals(coe, BigInteger.valueOf(-1))) {
+                return "-x";
+            }
+            return coe + "*x";
+        } else if (Objects.equals(coe, BigInteger.valueOf(1))) {
+            return "x^" + exp; // 系数为1，只输出指数
+        } else if (Objects.equals(coe, BigInteger.valueOf(-1))) {
+            return "-x^" + exp; // 系数为 -1，只输出指数
+        }
+        return coe + "*x^" + exp;
     }
 
     @Override
