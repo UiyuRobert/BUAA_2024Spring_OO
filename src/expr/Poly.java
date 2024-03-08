@@ -1,12 +1,16 @@
 package expr;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 
-public class Poly implements Serializable{ // 多项式
+public class Poly implements Serializable { // 多项式
     private ArrayList<Mono> monoList;
 
     public Poly() {
@@ -103,7 +107,8 @@ public class Poly implements Serializable{ // 多项式
 
     @Override
     public boolean equals(Object object) {
-        if (object instanceof Poly poly) {
+        if (object instanceof Poly) {
+            Poly poly = (Poly) object;
             if (monoList.isEmpty() && poly.getMonoList().isEmpty()) {
                 return true;
             } else if ((!monoList.isEmpty()) && (!poly.getMonoList().isEmpty())
