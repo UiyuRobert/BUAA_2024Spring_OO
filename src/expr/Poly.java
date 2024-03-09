@@ -99,11 +99,15 @@ public class Poly implements Serializable { // 多项式
         }
         StringBuilder sb = new StringBuilder();
         for (Mono mono : monoList) {
-            sb.append("+");
-            sb.append(mono.toString());
+            if (!mono.getCoe().equals(BigInteger.ZERO)) {
+                sb.append("+");
+                sb.append(mono.toString());
+            }
         }
         String result = sb.toString();
-        if (result.charAt(0) == '+') {
+        if (result.isEmpty()) {
+            return "0";
+        } else if (result.charAt(0) == '+') {
             result = result.substring(1);
         }
         return result;
