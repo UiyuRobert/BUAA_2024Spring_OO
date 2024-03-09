@@ -93,7 +93,13 @@ public class Mono implements Serializable { // 单项式类
                     return simplifyFirstHalf();
                 }
             }
-            return simplifyFirstHalf() + "*" + "exp((" + expExp.toString() + "))";
+            String firstHalf = simplifyFirstHalf();
+            if (firstHalf.equals("1")) {
+                return "exp((" + expExp.toString() + "))";
+            } else if (firstHalf.equals("-1")) {
+                return "-exp((" + expExp.toString() + "))";
+            }
+            return firstHalf + "*" + "exp((" + expExp.toString() + "))";
         }
     }
 
