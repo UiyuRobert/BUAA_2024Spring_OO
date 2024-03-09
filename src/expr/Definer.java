@@ -13,7 +13,7 @@ public class Definer { // 自定义函数的解析
 
     public static void addFunc(String input) { // 新增一个自定义函数
         String[] parts = input.trim().split("=");
-        Pattern pattern = Pattern.compile("\\b([fghxyz]+)\\b");
+        Pattern pattern = Pattern.compile("\\b([fghxyz])\\b");
         Matcher matcher = pattern.matcher(parts[0]);
         boolean flag = true;
         String funcName = ""; // 函数名
@@ -23,11 +23,33 @@ public class Definer { // 自定义函数的解析
                 funcName = matcher.group();
                 flag = false;
             } else {
-                paraList.add(matcher.group());
+                String para = matcher.group();
+                if (para.equals("x")) {
+                    paraList.add("a");
+                } else if (para.equals("y")) {
+                    paraList.add("b");
+                } else if (para.equals("z")) {
+                    paraList.add("c");
+                }
             }
         }
-        funcMap.put(funcName, parts[1]);
         paraMap.put(funcName, paraList);
+        Matcher funcMatcher = pattern.matcher(parts[1]);
+        StringBuffer result = new StringBuffer();
+        while (funcMatcher.find()) {
+            String replacement = null;
+            String para = funcMatcher.group();
+            if (para.equals("x")) {
+                replacement = "a";
+            } else if (para.equals("y")) {
+                replacement = "b";
+            } else if (para.equals("z")) {
+                replacement = "c";
+            }
+            funcMatcher.appendReplacement(result, Matcher.quoteReplacement(replacement));
+        }
+        funcMatcher.appendTail(result);
+        funcMap.put(funcName, result.toString());
     }
 
     public static String callFunc(String name, ArrayList<Factor> actualParas) { // 形参替换实参
