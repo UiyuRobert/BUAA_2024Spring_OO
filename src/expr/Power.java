@@ -19,7 +19,7 @@ public class Power implements Factor {
     @Override
     public Poly toPoly() {
         Poly poly = new Poly();
-        return poly.monoToPoly(new BigInteger("1"), Integer.parseInt(exp));
+        return poly.monoToPoly(new BigInteger("1"), new BigInteger(exp));
     }
 
     @Override
