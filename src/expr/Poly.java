@@ -21,7 +21,7 @@ public class Poly implements Serializable { // 多项式
         return monoList;
     }
 
-    public Poly monoToPoly(BigInteger coe, int exp) { // ax^n 到多项式
+    public Poly monoToPoly(BigInteger coe, BigInteger exp) { // ax^n 到多项式
         monoList.add(new Mono(coe, exp));
         return this;
     }
@@ -77,7 +77,7 @@ public class Poly implements Serializable { // 多项式
 
     public Poly powPoly(int exp) throws IOException, ClassNotFoundException { // () ^ exp 展开
         Poly newPoly = new Poly();
-        newPoly = newPoly.monoToPoly(BigInteger.ONE,0);
+        newPoly = newPoly.monoToPoly(BigInteger.ONE,BigInteger.ZERO);
         for (int i = 0; i < exp; ++i) {
             newPoly = newPoly.mulPoly(this);
         }
