@@ -22,7 +22,7 @@ public class Num implements Factor {
     @Override
     public Poly toPoly() {
         Poly poly = new Poly();
-        return poly.monoToPoly(new BigInteger(num), 0);
+        return poly.monoToPoly(new BigInteger(num), BigInteger.ZERO);
     }
 
     @Override
