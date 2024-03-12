@@ -36,18 +36,23 @@ public class Expr implements Factor {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        boolean flag = false;
         for (Term term : terms) {
-            sb.append("+");
-            sb.append(term.toString());
+            if (!flag) {
+                sb.append(term.toString());
+                flag = true;
+            } else {
+                sb.append("+").append(term.toString());
+            }
         }
         if (exp.equals("1")) {
-            return sb.toString();
+            return sb.toString().replaceAll("(\\+\\+)|(--)", "+").replaceAll("(-\\+)|(\\+-)", "-");
         } else if (exp.equals("0")) {
             return "1";
         } else {
             sb.insert(0,"(");
             sb.append(")^").append(exp);
-            return sb.toString();
+            return sb.toString().replaceAll("(\\+\\+)|(--)", "+").replaceAll("(-\\+)|(\\+-)", "-");
         }
     }
 }
