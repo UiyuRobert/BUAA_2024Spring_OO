@@ -40,7 +40,7 @@ public class Term implements Factor {
     @Override
     public Poly toPoly() throws IOException, ClassNotFoundException {
         Poly poly = new Poly();
-        poly = poly.monoToPoly(coe, 0);
+        poly = poly.monoToPoly(coe, BigInteger.ZERO);
         for (Factor factor : factors) {
             poly = poly.mulPoly(factor.toPoly());
         }
