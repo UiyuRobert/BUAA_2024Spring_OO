@@ -20,12 +20,12 @@ public class ExpFactor implements Factor {
     @Override
     public Poly toPoly() throws IOException, ClassNotFoundException {
         Poly poly = new Poly();
-        if (Integer.parseInt(exp) == 0) { // 如果指数部分为 0
-            return poly.monoToPoly(BigInteger.ONE, 0); // 1*x^0
+        if (new BigInteger(exp).equals(BigInteger.ZERO)) { // 如果指数部分为 0
+            return poly.monoToPoly(BigInteger.ONE, BigInteger.ZERO); // 1*x^0
         } else {
             Poly newPoly = new Poly();
             // 将整体指数放入括号内
-            newPoly = newPoly.monoToPoly(new BigInteger(exp),0);
+            newPoly = newPoly.monoToPoly(new BigInteger(exp),BigInteger.ZERO);
             newPoly = newPoly.mulPoly(factor.toPoly());
             return poly.monoToPoly(new Mono(newPoly));
         }
