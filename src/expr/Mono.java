@@ -12,11 +12,11 @@ import java.util.Objects;
 
 public class Mono implements Serializable { // 单项式类
     private BigInteger coe; // 底数
-    private int exp; // 指数
+    private BigInteger exp; // 指数
     private Poly expExp; // exp 括号内的因子
     // private HashMap<Character, Integer> varAndExp; // 底数和指数对
 
-    public Mono(BigInteger coe, int exp) { // 只有 ax^n 部分
+    public Mono(BigInteger coe, BigInteger exp) { // 只有 ax^n 部分
         expExp = new Poly();
         // varAndExp = new HashMap<>();
         this.coe = coe;
@@ -26,11 +26,11 @@ public class Mono implements Serializable { // 单项式类
 
     public Mono(Poly poly) { // 只有 exp ()^n 部分
         this.expExp = poly;
-        this.exp = 0;
+        this.exp = BigInteger.ZERO;
         this.coe = BigInteger.ONE;
     }
 
-    public Mono(BigInteger coe, int exp, Poly poly) {
+    public Mono(BigInteger coe, BigInteger exp, Poly poly) {
         this.expExp = poly;
         this.exp = exp;
         this.coe = coe;
@@ -40,7 +40,7 @@ public class Mono implements Serializable { // 单项式类
         return coe;
     }
 
-    public int getExp() {
+    public BigInteger getExp() {
         return exp;
     }
 
@@ -54,11 +54,11 @@ public class Mono implements Serializable { // 单项式类
 
     public Mono mul(Mono mono) throws IOException, ClassNotFoundException {
         return new Mono(this.coe.multiply(mono.getCoe()),
-                this.exp + mono.getExp(), this.expExp.addPoly(mono.getExpExp()));
+                this.exp.add(mono.getExp()), this.expExp.addPoly(mono.getExpExp()));
     }
 
     public boolean canAdd(Mono mono) { // 两个 Mono 能否相加
-        if (this.exp == mono.getExp()) { // x^n 部分指数相同
+        if (Objects.equals(this.exp, mono.getExp())) { // x^n 部分指数相同
             if (expExp.isPolyNull() && mono.getExpExp().isPolyNull()) { // exp() 为空
                 return true;
             }
@@ -104,9 +104,9 @@ public class Mono implements Serializable { // 单项式类
     }
 
     public String simplifyFirstHalf() {
-        if (exp == 0) { // 如果 a*x^n 的 n = 0
+        if (exp.equals(BigInteger.ZERO)) { // 如果 a*x^n 的 n = 0
             return coe.toString();
-        } else if (exp == 1) { // 指数为 1
+        } else if (exp.equals(BigInteger.ONE)) { // 指数为 1
             if (coe.equals(BigInteger.ONE)) { // 系数为 1
                 return "x";
             } else if (Objects.equals(coe, BigInteger.valueOf(-1))) {
@@ -125,7 +125,8 @@ public class Mono implements Serializable { // 单项式类
     public boolean equals(Object object) {
         if (object instanceof Mono) {
             Mono mono = (Mono) object;
-            if (Objects.equals(this.coe, mono.getCoe()) && this.exp == mono.getExp()) { // x^n 指数相同
+            if (Objects.equals(this.coe, mono.getCoe()) &&
+                    Objects.equals(this.exp, mono.getExp())) { // x^n 指数相同
                 if (expExp.isPolyNull()) { // exp() 为空
                     return true;
                 }
