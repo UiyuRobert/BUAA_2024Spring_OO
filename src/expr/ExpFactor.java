@@ -36,8 +36,8 @@ public class ExpFactor implements Factor {
         if (factor == null || exp.equals("0")) {
             return "1";
         } else if (exp.equals("1")) {
-            return "exp(" + factor.toString() + ")";
+            return "exp((" + factor.toString() + "))";
         }
-        return "exp(" + factor.toString() + ")^" + exp;
+        return "exp((" + factor.toString() + "))^" + exp;
     }
 }
