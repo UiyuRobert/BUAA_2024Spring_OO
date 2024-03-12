@@ -55,13 +55,33 @@ public class Term implements Factor {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(coe);
-        for (Factor factor : factors) {
-            sb.append("*(");
-            sb.append(factor.toString());
-            sb.append(")");
+        if (!factors.isEmpty() && coe.equals(BigInteger.ONE)) {
+            boolean flag = false;
+            for (Factor factor : factors) {
+                if (!flag) {
+                    sb.append("(").append(factor.toString()).append(")");
+                    flag = true;
+                } else {
+                    sb.append("*(").append(factor.toString()).append(")");
+                }
+            }
+        } else if (!factors.isEmpty() && coe.equals(new BigInteger("-1"))) {
+            boolean flag = false;
+            for (Factor factor : factors) {
+                if (!flag) {
+                    sb.append("-(").append(factor.toString()).append(")");
+                    flag = true;
+                } else {
+                    sb.append("*(").append(factor.toString()).append(")");
+                }
+            }
+        }
+        else {
+            sb.append(coe);
+            for (Factor factor : factors) {
+                sb.append("*(").append(factor.toString()).append(")");
+            }
         }
         return sb.toString();
     }
-
 }
