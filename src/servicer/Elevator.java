@@ -37,7 +37,13 @@ public class Elevator extends Thread {
             } else if (advice == Advice.UTURN) {
                 moveDirection = !moveDirection;
             } else if (advice == Advice.WAIT) {
-                requests.waitRequest();
+                synchronized (requests) {
+                    try {
+                        wait();
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
             } else if (advice == Advice.OPEN) {
                 openAndClose();
             }

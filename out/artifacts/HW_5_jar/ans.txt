@@ -1,839 +1,235 @@
-[   2.1470]ARRIVE-2-4
-[   2.1500]ARRIVE-2-3
-[   2.4460]OPEN-1-1
-[   2.5510]ARRIVE-3-4
-[   2.5510]OPEN-3-4
-[   2.5580]ARRIVE-3-3
-电梯 ID 为Thread-0
-电梯里还有0名乘客
-等待人数为 0
-移动方向为true
-remove personID:11
-[   2.8490]IN-11-1-1
-电梯 ID 为Thread-0
-电梯里还有1名乘客
-等待人数为 0
-移动方向为true
-add personID:11
-[   2.8490]CLOSE-1-1
-[   2.9440]ARRIVE-2-6
-电梯 ID 为Thread-3
-电梯里还有0名乘客
-等待人数为 1
-移动方向为true
-remove personID:48
-[   2.9530]IN-48-3-4
-电梯 ID 为Thread-3
-电梯里还有1名乘客
-等待人数为 1
-移动方向为true
-add personID:48
-[   2.9530]CLOSE-3-4
-[   2.9690]ARRIVE-4-3
-[   3.2570]ARRIVE-2-1
-[   3.2570]OPEN-2-1
-[   3.3450]ARRIVE-3-6
-[   3.3450]OPEN-3-6
-[   3.3600]ARRIVE-4-4
-[   3.3760]ARRIVE-5-3
-[   3.6600]OUT-11-2-1
-[   3.6610]CLOSE-2-1
-电梯 ID 为Thread-5
-电梯里还有0名乘客
-等待人数为 4
-移动方向为true
-remove personID:2
-[   3.7540]IN-2-3-6
-电梯 ID 为Thread-5
-电梯里还有1名乘客
-等待人数为 4
-移动方向为true
-add personID:2
-[   3.7540]CLOSE-3-6
-[   3.7690]ARRIVE-5-4
-[   3.7690]OPEN-5-4
-[   3.7790]ARRIVE-6-3
-[   4.1580]ARRIVE-4-6
-[   4.1740]OUT-48-5-4
-[   4.1740]CLOSE-5-4
-[   4.1900]ARRIVE-7-3
-[   4.3510]ARRIVE-2-5
-[   4.5730]ARRIVE-5-6
-[   4.5890]ARRIVE-6-4
-[   4.5910]ARRIVE-8-3
-[   4.7570]ARRIVE-3-5
-[   4.9760]ARRIVE-6-6
-[   4.9900]ARRIVE-7-4
-[   4.9910]ARRIVE-9-3
-[   5.0480]ARRIVE-3-1
-[   5.1670]ARRIVE-4-5
-[   5.3780]ARRIVE-7-6
-[   5.3940]ARRIVE-10-3
-[   5.3940]OPEN-10-3
-[   5.3950]ARRIVE-8-4
-[   5.4560]ARRIVE-4-1
-[   5.5490]ARRIVE-2-2
-[   5.5800]ARRIVE-5-5
-[   5.7800]ARRIVE-8-6
-电梯 ID 为Thread-2
-电梯里还有0名乘客
-等待人数为 3
-移动方向为false
-remove personID:61
-[   5.7950]IN-61-10-3
-电梯 ID 为Thread-2
-电梯里还有1名乘客
-等待人数为 3
-移动方向为false
-add personID:61
-[   5.7950]CLOSE-10-3
-[   5.7960]ARRIVE-9-4
-[   5.7960]OPEN-9-4
-[   5.8580]ARRIVE-5-1
-[   5.9510]ARRIVE-3-2
-[   5.9810]ARRIVE-6-5
-[   5.9810]OPEN-6-5
-[   6.1850]ARRIVE-9-6
-[   6.1970]ARRIVE-9-3
-电梯 ID 为Thread-3
-电梯里还有0名乘客
-等待人数为 5
-移动方向为true
-remove personID:69
-[   6.2010]IN-69-9-4
-电梯 ID 为Thread-3
-电梯里还有1名乘客
-等待人数为 5
-移动方向为true
-add personID:69
-[   6.2020]CLOSE-9-4
-[   6.2610]ARRIVE-6-1
-[   6.3650]ARRIVE-4-2
-电梯 ID 为Thread-4
-电梯里还有0名乘客
-等待人数为 2
-移动方向为true
-remove personID:8
-[   6.3960]IN-8-6-5
-电梯 ID 为Thread-4
-电梯里还有1名乘客
-等待人数为 2
-移动方向为true
-add personID:8
-[   6.3970]CLOSE-6-5
-[   6.5890]ARRIVE-10-6
-[   6.6050]ARRIVE-10-4
-[   6.6050]ARRIVE-8-3
-[   6.6060]OPEN-8-3
-[   6.6690]ARRIVE-7-1
-[   6.6690]OPEN-7-1
-[   6.7870]ARRIVE-5-2
-[   6.8120]ARRIVE-7-5
-[   7.0020]ARRIVE-11-6
-[   7.0030]OPEN-11-6
-电梯 ID 为Thread-2
-电梯里还有1名乘客
-等待人数为 4
-移动方向为false
-remove personID:26
-[   7.0180]ARRIVE-11-4
-[   7.0180]IN-26-8-3
-电梯 ID 为Thread-2
-电梯里还有2名乘客
-等待人数为 4
-移动方向为false
-add personID:26
-[   7.0180]OPEN-11-4
-[   7.0190]CLOSE-8-3
-电梯 ID 为Thread-0
-电梯里还有0名乘客
-等待人数为 1
-移动方向为true
-remove personID:1
-[   7.0810]IN-1-7-1
-电梯 ID 为Thread-0
-电梯里还有1名乘客
-等待人数为 1
-移动方向为true
-add personID:1
-[   7.0820]CLOSE-7-1
-[   7.1940]ARRIVE-6-2
-[   7.2250]ARRIVE-8-5
-[   7.4070]OUT-2-11-6
-[   7.4070]CLOSE-11-6
-[   7.4070]OPEN-11-6
-[   7.4200]OUT-69-11-4
-[   7.4200]CLOSE-11-4
-[   7.4200]OPEN-11-4
-[   7.4220]ARRIVE-7-3
-[   7.4860]ARRIVE-8-1
-[   7.5970]ARRIVE-7-2
-[   7.5970]OPEN-7-2
-[   7.6310]ARRIVE-9-5
-[   7.6310]OPEN-9-5
-电梯 ID 为Thread-5
-电梯里还有0名乘客
-等待人数为 6
-移动方向为false
-remove personID:65
-[   7.8200]IN-65-11-6
-电梯 ID 为Thread-5
-电梯里还有1名乘客
-等待人数为 6
-移动方向为false
-add personID:65
-电梯 ID 为Thread-5
-电梯里还有1名乘客
-等待人数为 5
-移动方向为false
-remove personID:27
-[   7.8210]IN-27-11-6
-电梯 ID 为Thread-5
-电梯里还有2名乘客
-等待人数为 5
-移动方向为false
-add personID:27
-[   7.8210]CLOSE-11-6
-电梯 ID 为Thread-3
-电梯里还有0名乘客
-等待人数为 8
-移动方向为false
-remove personID:5
-[   7.8360]ARRIVE-6-3
-[   7.8360]IN-5-11-4
-电梯 ID 为Thread-3
-电梯里还有1名乘客
-等待人数为 8
-移动方向为false
-add personID:5
-[   7.8370]CLOSE-11-4
-[   7.8980]ARRIVE-9-1
-[   7.8990]OPEN-9-1
-电梯 ID 为Thread-1
-电梯里还有0名乘客
-等待人数为 1
-移动方向为true
-remove personID:23
-[   8.0090]IN-23-7-2
-电梯 ID 为Thread-1
-电梯里还有1名乘客
-等待人数为 1
-移动方向为true
-add personID:23
-[   8.0100]CLOSE-7-2
-电梯 ID 为Thread-4
-电梯里还有1名乘客
-等待人数为 2
-移动方向为true
-remove personID:3
-[   8.0400]IN-3-9-5
-电梯 ID 为Thread-4
-电梯里还有2名乘客
-等待人数为 2
-移动方向为true
-add personID:3
-[   8.0420]CLOSE-9-5
-[   8.2310]ARRIVE-10-6
-[   8.2320]OPEN-10-6
-[   8.2460]ARRIVE-10-4
-[   8.2460]ARRIVE-5-3
-[   8.3100]OUT-1-9-1
-[   8.3100]CLOSE-9-1
-[   8.4200]ARRIVE-8-2
-[   8.4510]ARRIVE-10-5
-[   8.4510]OPEN-10-5
-[   8.6400]OUT-65-10-6
-电梯 ID 为Thread-5
-电梯里还有1名乘客
-等待人数为 4
-移动方向为false
-remove personID:38
-[   8.6410]IN-38-10-6
-电梯 ID 为Thread-5
-电梯里还有2名乘客
-等待人数为 4
-移动方向为false
-add personID:38
-[   8.6410]CLOSE-10-6
-[   8.6560]ARRIVE-4-3
-[   8.6560]ARRIVE-9-4
-[   8.7200]ARRIVE-8-1
-[   8.8310]ARRIVE-9-2
-[   8.8630]OUT-8-10-5
-[   8.8640]OUT-3-10-5
-[   8.8640]CLOSE-10-5
-[   9.0530]ARRIVE-9-6
-[   9.0690]ARRIVE-8-4
-[   9.0860]OPEN-8-4
-[   9.0990]ARRIVE-3-3
-[   9.1320]ARRIVE-7-1
-[   9.1320]OPEN-7-1
-[   9.2420]ARRIVE-10-2
-[   9.2730]ARRIVE-9-5
-[   9.4600]ARRIVE-8-6
-[   9.4600]OPEN-8-6
-电梯 ID 为Thread-3
-电梯里还有1名乘客
-等待人数为 9
-移动方向为false
-remove personID:50
-[   9.5080]IN-50-8-4
-[   9.5080]ARRIVE-2-3
-[   9.5080]OPEN-2-3
-电梯 ID 为Thread-3
-电梯里还有2名乘客
-等待人数为 9
-移动方向为false
-add personID:50
-[   9.5100]CLOSE-8-4
-电梯 ID 为Thread-0
-电梯里还有0名乘客
-等待人数为 3
-移动方向为false
-remove personID:44
-[   9.5390]IN-44-7-1
-电梯 ID 为Thread-0
-电梯里还有1名乘客
-等待人数为 3
-移动方向为false
-add personID:44
-[   9.5390]CLOSE-7-1
-[   9.6520]ARRIVE-11-2
-[   9.6520]OPEN-11-2
-[   9.6820]ARRIVE-8-5
-电梯 ID 为Thread-5
-电梯里还有2名乘客
-等待人数为 4
-移动方向为false
-remove personID:43
-[   9.8720]IN-43-8-6
-电梯 ID 为Thread-5
-电梯里还有3名乘客
-等待人数为 4
-移动方向为false
-add personID:43
-[   9.8740]CLOSE-8-6
-[   9.9190]ARRIVE-7-4
-[   9.9190]OPEN-7-4
-[   9.9190]OUT-61-2-3
-[   9.9200]OUT-26-2-3
-[   9.9200]CLOSE-2-3
-[   9.9510]ARRIVE-6-1
-[   9.9520]OPEN-6-1
-[  10.0610]OUT-23-11-2
-[  10.0610]CLOSE-11-2
-[  10.0930]ARRIVE-7-5
-[  10.0930]OPEN-7-5
-[  10.2800]ARRIVE-7-6
-[  10.2800]OPEN-7-6
-[  10.3280]ARRIVE-1-3
-[  10.3290]OPEN-1-3
-[  10.3300]OUT-50-7-4
-电梯 ID 为Thread-3
-电梯里还有1名乘客
-等待人数为 9
-移动方向为false
-remove personID:9
-[  10.3310]IN-9-7-4
-电梯 ID 为Thread-3
-电梯里还有2名乘客
-等待人数为 9
-移动方向为false
-add personID:9
-[  10.3310]CLOSE-7-4
-电梯 ID 为Thread-0
-电梯里还有1名乘客
-等待人数为 2
-移动方向为false
-remove personID:20
-[  10.3590]IN-20-6-1
-电梯 ID 为Thread-0
-电梯里还有2名乘客
-等待人数为 2
-移动方向为false
-add personID:20
-[  10.3590]CLOSE-6-1
-[  10.4720]ARRIVE-10-2
-电梯 ID 为Thread-4
-电梯里还有0名乘客
-等待人数为 2
-移动方向为false
-remove personID:42
-[  10.5030]IN-42-7-5
-电梯 ID 为Thread-4
-电梯里还有1名乘客
-等待人数为 2
-移动方向为false
-add personID:42
-电梯 ID 为Thread-4
-电梯里还有1名乘客
-等待人数为 1
-移动方向为false
-remove personID:4
-[  10.5030]IN-4-7-5
-电梯 ID 为Thread-4
-电梯里还有2名乘客
-等待人数为 1
-移动方向为false
-add personID:4
-[  10.5030]CLOSE-7-5
-[  10.6930]OUT-43-7-6
-电梯 ID 为Thread-5
-电梯里还有2名乘客
-等待人数为 3
-移动方向为false
-remove personID:29
-[  10.6950]IN-29-7-6
-电梯 ID 为Thread-5
-电梯里还有3名乘客
-等待人数为 3
-移动方向为false
-add personID:29
-[  10.6950]CLOSE-7-6
-电梯 ID 为Thread-2
-电梯里还有0名乘客
-等待人数为 7
-移动方向为true
-remove personID:56
-[  10.7390]ARRIVE-6-4
-[  10.7390]OPEN-6-4
-[  10.7390]IN-56-1-3
-电梯 ID 为Thread-2
-电梯里还有1名乘客
-等待人数为 7
-移动方向为true
-add personID:56
-[  10.7460]CLOSE-1-3
-[  10.7700]ARRIVE-5-1
-[  10.8810]ARRIVE-9-2
-[  10.8810]OPEN-9-2
-[  10.9140]ARRIVE-6-5
-[  10.9140]OPEN-6-5
-[  11.1040]ARRIVE-6-6
-[  11.1500]ARRIVE-2-3
-[  11.1500]OUT-9-6-4
-[  11.1500]CLOSE-6-4
-[  11.1820]ARRIVE-4-1
-[  11.1820]OPEN-4-1
-电梯 ID 为Thread-1
-电梯里还有0名乘客
-等待人数为 0
-移动方向为false
-remove personID:6
-[  11.2920]IN-6-9-2
-电梯 ID 为Thread-1
-电梯里还有1名乘客
-等待人数为 0
-移动方向为false
-add personID:6
-[  11.2920]CLOSE-9-2
-[  11.3230]OUT-4-6-5
-[  11.3310]CLOSE-6-5
-[  11.5180]ARRIVE-5-6
-[  11.5180]OPEN-5-6
-[  11.5660]ARRIVE-3-3
-[  11.5660]ARRIVE-5-4
-[  11.5660]OPEN-5-4
-[  11.5980]OUT-44-4-1
-电梯 ID 为Thread-0
-电梯里还有1名乘客
-等待人数为 1
-移动方向为false
-remove personID:21
-[  11.5980]IN-21-4-1
-电梯 ID 为Thread-0
-电梯里还有2名乘客
-等待人数为 1
-移动方向为false
-add personID:21
-电梯 ID 为Thread-0
-电梯里还有2名乘客
-等待人数为 0
-移动方向为false
-remove personID:45
-[  11.5980]IN-45-4-1
-电梯 ID 为Thread-0
-电梯里还有3名乘客
-等待人数为 0
-移动方向为false
-add personID:45
-[  11.5980]CLOSE-4-1
-[  11.7080]ARRIVE-8-2
-[  11.7390]ARRIVE-5-5
-[  11.7390]OPEN-5-5
-电梯 ID 为Thread-5
-电梯里还有3名乘客
-等待人数为 2
-移动方向为false
-remove personID:52
-[  11.9310]IN-52-5-6
-电梯 ID 为Thread-5
-电梯里还有4名乘客
-等待人数为 2
-移动方向为false
-add personID:52
-[  11.9310]CLOSE-5-6
-电梯 ID 为Thread-3
-电梯里还有1名乘客
-等待人数为 8
-移动方向为false
-remove personID:32
-[  11.9760]IN-32-5-4
-[  11.9760]ARRIVE-4-3
-电梯 ID 为Thread-3
-电梯里还有2名乘客
-等待人数为 8
-移动方向为false
-add personID:32
-[  11.9770]CLOSE-5-4
-[  12.0080]ARRIVE-3-1
-[  12.1180]ARRIVE-7-2
-电梯 ID 为Thread-4
-电梯里还有1名乘客
-等待人数为 0
-移动方向为false
-remove personID:53
-[  12.1490]IN-53-5-5
-电梯 ID 为Thread-4
-电梯里还有2名乘客
-等待人数为 0
-移动方向为false
-add personID:53
-[  12.1490]CLOSE-5-5
-[  12.3380]ARRIVE-4-6
-[  12.3860]ARRIVE-4-4
-[  12.3860]ARRIVE-5-3
-[  12.3860]OPEN-5-3
-[  12.4170]ARRIVE-2-1
-[  12.4170]OPEN-2-1
-[  12.5270]ARRIVE-6-2
-[  12.5590]ARRIVE-4-5
-[  12.7480]ARRIVE-3-6
-[  12.7480]OPEN-3-6
-电梯 ID 为Thread-2
-电梯里还有1名乘客
-等待人数为 6
-移动方向为true
-remove personID:55
-[  12.7950]IN-55-5-3
-电梯 ID 为Thread-2
-电梯里还有2名乘客
-等待人数为 6
-移动方向为true
-add personID:55
-电梯 ID 为Thread-2
-电梯里还有2名乘客
-等待人数为 5
-移动方向为true
-remove personID:64
-[  12.7950]IN-64-5-3
-电梯 ID 为Thread-2
-电梯里还有3名乘客
-等待人数为 5
-移动方向为true
-add personID:64
-[  12.7950]CLOSE-5-3
-[  12.7950]ARRIVE-3-4
-[  12.7960]OPEN-3-4
-[  12.8270]OUT-20-2-1
-[  12.8270]CLOSE-2-1
-[  12.9390]ARRIVE-5-2
-[  12.9710]ARRIVE-3-5
-[  12.9710]OPEN-3-5
-[  13.1610]OUT-52-3-6
-[  13.1610]CLOSE-3-6
-[  13.2040]OUT-5-3-4
-[  13.2040]ARRIVE-6-3
-[  13.2040]OUT-32-3-4
-[  13.2040]CLOSE-3-4
-[  13.2360]ARRIVE-1-1
-[  13.2360]OPEN-1-1
-[  13.3450]ARRIVE-4-2
-[  13.3760]OUT-53-3-5
-[  13.3760]CLOSE-3-5
-[  13.5650]ARRIVE-2-6
-[  13.5650]OPEN-2-6
-[  13.6130]ARRIVE-2-4
-[  13.6130]ARRIVE-7-3
-[  13.6130]OPEN-7-3
-[  13.6450]OUT-21-1-1
-[  13.6450]OUT-45-1-1
-[  13.6450]CLOSE-1-1
-[  13.7550]ARRIVE-3-2
-[  13.7870]ARRIVE-2-5
-[  13.9760]OUT-29-2-6
-[  13.9830]CLOSE-2-6
-[  14.0240]ARRIVE-1-4
-[  14.0260]OUT-55-7-3
-电梯 ID 为Thread-2
-电梯里还有2名乘客
-等待人数为 4
-移动方向为true
-remove personID:19
-[  14.0260]IN-19-7-3
-电梯 ID 为Thread-2
-电梯里还有3名乘客
-等待人数为 4
-移动方向为true
-add personID:19
-[  14.0280]CLOSE-7-3
-[  14.0280]OPEN-1-4
-[  14.1680]ARRIVE-2-2
-[  14.1680]OPEN-2-2
-[  14.2000]ARRIVE-1-5
-[  14.2000]OPEN-1-5
-[  14.3970]ARRIVE-1-6
-[  14.3970]OPEN-1-6
-电梯 ID 为Thread-3
-电梯里还有0名乘客
-等待人数为 7
-移动方向为true
-remove personID:17
-[  14.4280]ARRIVE-8-3
-[  14.4280]OPEN-8-3
-[  14.4280]IN-17-1-4
-电梯 ID 为Thread-3
-电梯里还有1名乘客
-等待人数为 7
-移动方向为true
-add personID:17
-电梯 ID 为Thread-3
-电梯里还有1名乘客
-等待人数为 6
-移动方向为true
-remove personID:40
-[  14.4280]IN-40-1-4
-电梯 ID 为Thread-3
-电梯里还有2名乘客
-等待人数为 6
-移动方向为true
-add personID:40
-[  14.4290]CLOSE-1-4
-[  14.5710]OUT-6-2-2
-[  14.5710]CLOSE-2-2
-[  14.6030]OUT-42-1-5
-[  14.6030]CLOSE-1-5
-[  14.8070]OUT-27-1-6
-[  14.8070]OUT-38-1-6
-[  14.8070]CLOSE-1-6
-[  14.8380]ARRIVE-2-4
-[  14.8380]OUT-56-8-3
-[  14.8380]OUT-19-8-3
-[  14.8380]CLOSE-8-3
-[  15.2150]ARRIVE-2-6
-[  15.2150]OPEN-2-6
-[  15.2450]ARRIVE-3-4
-[  15.2450]OPEN-3-4
-[  15.2450]ARRIVE-9-3
-[  15.2450]OPEN-9-3
-电梯 ID 为Thread-5
-电梯里还有0名乘客
-等待人数为 1
-移动方向为true
-remove personID:60
-[  15.6180]IN-60-2-6
-电梯 ID 为Thread-5
-电梯里还有1名乘客
-等待人数为 1
-移动方向为true
-add personID:60
-[  15.6200]CLOSE-2-6
-电梯 ID 为Thread-3
-电梯里还有2名乘客
-等待人数为 5
-移动方向为true
-remove personID:57
-[  15.6500]IN-57-3-4
-电梯 ID 为Thread-3
-电梯里还有3名乘客
-等待人数为 5
-移动方向为true
-add personID:57
-电梯 ID 为Thread-3
-电梯里还有3名乘客
-等待人数为 4
-移动方向为true
-remove personID:13
-[  15.6500]IN-13-3-4
-电梯 ID 为Thread-3
-电梯里还有4名乘客
-等待人数为 4
-移动方向为true
-add personID:13
-电梯 ID 为Thread-3
-电梯里还有4名乘客
-等待人数为 3
-移动方向为true
-remove personID:28
-[  15.6500]IN-28-3-4
-电梯 ID 为Thread-3
-电梯里还有5名乘客
-等待人数为 3
-移动方向为true
-add personID:28
-[  15.6500]CLOSE-3-4
-[  15.6500]OUT-64-9-3
-[  15.6510]CLOSE-9-3
-[  16.0290]ARRIVE-3-6
-[  16.0290]OPEN-3-6
-[  16.0610]ARRIVE-10-3
-[  16.0620]ARRIVE-4-4
-[  16.0620]OPEN-4-4
-[  16.0620]OPEN-10-3
-电梯 ID 为Thread-5
-电梯里还有1名乘客
-等待人数为 0
-移动方向为true
-remove personID:33
-[  16.4440]IN-33-3-6
-电梯 ID 为Thread-5
-电梯里还有2名乘客
-等待人数为 0
-移动方向为true
-add personID:33
-[  16.4440]CLOSE-3-6
-电梯 ID 为Thread-2
-电梯里还有0名乘客
-等待人数为 3
-移动方向为false
-remove personID:68
-[  16.4790]IN-68-10-3
-电梯 ID 为Thread-2
-电梯里还有1名乘客
-等待人数为 3
-移动方向为false
-add personID:68
-电梯 ID 为Thread-2
-电梯里还有1名乘客
-等待人数为 2
-移动方向为false
-remove personID:18
-[  16.4790]IN-18-10-3
-电梯 ID 为Thread-2
-电梯里还有2名乘客
-等待人数为 2
-移动方向为false
-add personID:18
-[  16.4790]CLOSE-10-3
-电梯 ID 为Thread-3
-电梯里还有5名乘客
-等待人数为 2
-移动方向为true
-remove personID:67
-[  16.4790]IN-67-4-4
-电梯 ID 为Thread-3
-电梯里还有6名乘客
-等待人数为 2
-移动方向为true
-add personID:67
-[  16.4790]CLOSE-4-4
-[  16.8540]ARRIVE-4-6
-[  16.8860]ARRIVE-5-4
-[  16.8860]ARRIVE-9-3
-[  16.8860]OPEN-9-3
-[  17.2680]ARRIVE-5-6
-[  17.3000]OUT-68-9-3
-电梯 ID 为Thread-2
-电梯里还有1名乘客
-等待人数为 1
-移动方向为false
-remove personID:14
-[  17.3120]IN-14-9-3
-电梯 ID 为Thread-2
-电梯里还有2名乘客
-等待人数为 1
-移动方向为false
-add personID:14
-[  17.3120]CLOSE-9-3
-[  17.3120]ARRIVE-6-4
-[  17.6760]ARRIVE-6-6
-[  17.7230]ARRIVE-7-4
-[  17.7230]ARRIVE-8-3
-[  18.0840]ARRIVE-7-6
-[  18.0840]OPEN-7-6
-[  18.1300]ARRIVE-7-3
-[  18.1300]ARRIVE-8-4
-[  18.1300]OPEN-8-4
-[  18.4930]OUT-60-7-6
-[  18.4930]CLOSE-7-6
-[  18.5400]ARRIVE-6-3
-[  18.5400]OPEN-6-3
-[  18.5400]OUT-13-8-4
-电梯 ID 为Thread-3
-电梯里还有5名乘客
-等待人数为 1
-移动方向为true
-remove personID:70
-[  18.5400]IN-70-8-4
-电梯 ID 为Thread-3
-电梯里还有6名乘客
-等待人数为 1
-移动方向为true
-add personID:70
-[  18.5400]CLOSE-8-4
-[  18.9060]ARRIVE-8-6
-[  18.9060]OPEN-8-6
-[  18.9540]ARRIVE-9-4
-[  18.9540]OPEN-9-4
-[  18.9540]OUT-14-6-3
-电梯 ID 为Thread-2
-电梯里还有1名乘客
-等待人数为 0
-移动方向为false
-remove personID:62
-[  18.9540]IN-62-6-3
-电梯 ID 为Thread-2
-电梯里还有2名乘客
-等待人数为 0
-移动方向为false
-add personID:62
-[  18.9540]CLOSE-6-3
-[  19.3150]OUT-33-8-6
-[  19.3150]CLOSE-8-6
-[  19.3610]OUT-57-9-4
-[  19.3610]OUT-67-9-4
-[  19.3610]CLOSE-9-4
-[  19.3610]ARRIVE-5-3
-[  19.7680]ARRIVE-10-4
-[  19.7680]OPEN-10-4
-[  19.7680]ARRIVE-4-3
-[  19.7680]OPEN-4-3
-[  20.1810]OUT-18-4-3
-[  20.1840]OUT-17-10-4
-[  20.1840]OUT-40-10-4
-[  20.1840]OUT-28-10-4
-[  20.1850]CLOSE-10-4
-[  20.1850]CLOSE-4-3
-[  20.5900]ARRIVE-11-4
-[  20.5900]OPEN-11-4
-[  20.5900]ARRIVE-3-3
-[  21.0000]OUT-70-11-4
-[  21.0000]CLOSE-11-4
-[  21.0000]ARRIVE-2-3
-[  21.4110]ARRIVE-10-4
-[  21.4120]ARRIVE-1-3
-[  21.4120]OPEN-1-3
-[  21.8220]ARRIVE-9-4
-[  21.8220]OUT-62-1-3
-[  21.8220]CLOSE-1-3
-[  22.2340]ARRIVE-8-4
-[  22.6360]ARRIVE-7-4
-[  23.0450]ARRIVE-6-4
-[  23.0450]OPEN-6-4
-电梯 ID 为Thread-3
-电梯里还有0名乘客
-等待人数为 0
-移动方向为true
-remove personID:24
-[  23.4460]IN-24-6-4
-电梯 ID 为Thread-3
-电梯里还有1名乘客
-等待人数为 0
-移动方向为true
-add personID:24
-[  23.4460]CLOSE-6-4
-[  23.8570]ARRIVE-7-4
-[  24.2670]ARRIVE-8-4
-[  24.2670]OPEN-8-4
-[  24.6780]OUT-24-8-4
-[  24.6870]CLOSE-8-4
+[   1.6420]ARRIVE-2-4
+[   2.0540]ARRIVE-3-4
+[   2.4620]ARRIVE-4-4
+[   2.8700]ARRIVE-5-4
+[   2.8700]OPEN-5-4
+[   3.2790]IN-33-5-4
+[   3.2790]CLOSE-5-4
+[   3.6400]ARRIVE-2-1
+[   3.6870]ARRIVE-6-4
+[   4.0370]ARRIVE-2-2
+[   4.0530]ARRIVE-3-1
+[   4.1000]ARRIVE-7-4
+[   4.1480]ARRIVE-2-3
+[   4.4500]ARRIVE-3-2
+[   4.4660]ARRIVE-4-1
+[   4.5130]ARRIVE-8-4
+[   4.5610]ARRIVE-3-3
+[   4.8630]ARRIVE-4-2
+[   4.8640]OPEN-4-2
+[   4.8790]ARRIVE-5-1
+[   4.9270]ARRIVE-9-4
+[   4.9270]OPEN-9-4
+[   4.9740]ARRIVE-4-3
+[   5.2780]IN-12-4-2
+[   5.2780]CLOSE-4-2
+[   5.2940]ARRIVE-6-1
+[   5.2950]OPEN-6-1
+[   5.3420]OUT-33-9-4
+[   5.3520]CLOSE-9-4
+[   5.3890]ARRIVE-5-3
+[   5.6920]ARRIVE-5-2
+[   5.7080]IN-65-6-1
+[   5.7080]CLOSE-6-1
+[   5.7560]ARRIVE-8-4
+[   5.7560]OPEN-8-4
+[   5.8030]ARRIVE-6-3
+[   6.1050]ARRIVE-6-2
+[   6.1060]OPEN-6-2
+[   6.1210]ARRIVE-5-1
+[   6.1680]IN-6-8-4
+[   6.1690]CLOSE-8-4
+[   6.2160]ARRIVE-7-3
+[   6.5190]OUT-12-6-2
+[   6.5200]CLOSE-6-2
+[   6.5350]ARRIVE-4-1
+[   6.5830]ARRIVE-7-4
+[   6.6310]ARRIVE-8-3
+[   6.9340]ARRIVE-5-2
+[   6.9350]OPEN-5-2
+[   6.9490]ARRIVE-3-1
+[   6.9970]ARRIVE-6-4
+[   7.0450]ARRIVE-9-3
+[   7.3490]ARRIVE-2-6
+[   7.3500]IN-19-5-2
+[   7.3500]CLOSE-5-2
+[   7.3510]ARRIVE-2-1
+[   7.3990]ARRIVE-5-4
+[   7.4000]OPEN-5-4
+[   7.4460]ARRIVE-10-3
+[   7.5270]ARRIVE-2-5
+[   7.7500]ARRIVE-3-6
+[   7.7520]OPEN-3-6
+[   7.7660]ARRIVE-4-2
+[   7.7670]ARRIVE-1-1
+[   7.7670]OPEN-1-1
+[   7.8150]OUT-6-5-4
+[   7.8160]CLOSE-5-4
+[   7.8630]ARRIVE-11-3
+[   7.8630]OPEN-11-3
+[   7.9420]ARRIVE-3-5
+[   8.1640]IN-42-3-6
+[   8.1650]CLOSE-3-6
+[   8.1800]ARRIVE-3-2
+[   8.1820]OUT-65-1-1
+[   8.1820]CLOSE-1-1
+[   8.2290]ARRIVE-4-4
+[   8.2770]IN-61-11-3
+[   8.2770]CLOSE-11-3
+[   8.3570]ARRIVE-4-5
+[   8.5810]ARRIVE-4-6
+[   8.5960]ARRIVE-2-2
+[   8.5970]ARRIVE-2-1
+[   8.6450]ARRIVE-3-4
+[   8.6920]ARRIVE-10-3
+[   8.6940]OPEN-10-3
+[   8.7710]ARRIVE-5-5
+[   8.9940]ARRIVE-5-6
+[   9.0100]ARRIVE-1-2
+[   9.0110]OPEN-1-2
+[   9.0110]ARRIVE-3-1
+[   9.0590]ARRIVE-2-4
+[   9.0590]OPEN-2-4
+[   9.1070]IN-57-10-3
+[   9.1070]CLOSE-10-3
+[   9.1860]ARRIVE-6-5
+[   9.4080]ARRIVE-6-6
+[   9.4250]OUT-19-1-2
+[   9.4350]CLOSE-1-2
+[   9.4360]ARRIVE-4-1
+[   9.4670]IN-31-2-4
+[   9.4670]CLOSE-2-4
+[   9.5150]ARRIVE-9-3
+[   9.5150]OPEN-9-3
+[   9.5940]ARRIVE-7-5
+[   9.8140]ARRIVE-7-6
+[   9.8460]ARRIVE-5-1
+[   9.8470]ARRIVE-2-2
+[   9.8470]OPEN-2-2
+[   9.8780]ARRIVE-3-4
+[   9.8780]OPEN-3-4
+[   9.9250]IN-25-9-3
+[   9.9250]CLOSE-9-3
+[  10.0030]ARRIVE-8-5
+[  10.2230]ARRIVE-8-6
+[  10.2550]IN-43-2-2
+[  10.2560]CLOSE-2-2
+[  10.2560]ARRIVE-6-1
+[  10.2870]OUT-31-3-4
+[  10.2870]CLOSE-3-4
+[  10.3340]ARRIVE-8-3
+[  10.4130]ARRIVE-9-5
+[  10.6330]ARRIVE-9-6
+[  10.6650]ARRIVE-7-1
+[  10.6660]ARRIVE-3-2
+[  10.7440]ARRIVE-7-3
+[  10.7440]OPEN-7-3
+[  10.8220]ARRIVE-10-5
+[  11.0430]ARRIVE-10-6
+[  11.0430]OPEN-10-6
+[  11.0740]ARRIVE-8-1
+[  11.0770]OPEN-8-1
+[  11.0770]ARRIVE-4-2
+[  11.0770]OPEN-4-2
+[  11.1560]OUT-61-7-3
+[  11.1560]OUT-57-7-3
+[  11.1560]CLOSE-7-3
+[  11.2340]ARRIVE-11-5
+[  11.2340]OPEN-11-5
+[  11.4560]OUT-42-10-6
+[  11.4560]CLOSE-10-6
+[  11.4870]IN-16-4-2
+[  11.4880]CLOSE-4-2
+[  11.4880]IN-46-8-1
+[  11.4880]CLOSE-8-1
+[  11.5670]ARRIVE-6-3
+[  11.6450]IN-70-11-5
+[  11.6450]CLOSE-11-5
+[  11.8650]ARRIVE-9-6
+[  11.8970]ARRIVE-7-1
+[  11.8970]ARRIVE-5-2
+[  11.8970]OPEN-5-2
+[  11.9750]ARRIVE-5-3
+[  12.0540]ARRIVE-10-5
+[  12.2740]ARRIVE-8-6
+[  12.3050]ARRIVE-6-1
+[  12.3060]OUT-43-5-2
+[  12.3060]CLOSE-5-2
+[  12.3840]ARRIVE-4-3
+[  12.3840]OPEN-4-3
+[  12.4630]ARRIVE-9-5
+[  12.4630]OPEN-9-5
+[  12.6840]ARRIVE-7-6
+[  12.7150]ARRIVE-5-1
+[  12.7170]ARRIVE-6-2
+[  12.7960]OUT-25-4-3
+[  12.7960]CLOSE-4-3
+[  12.8740]IN-5-9-5
+[  12.8740]CLOSE-9-5
+[  13.0950]ARRIVE-6-6
+[  13.1260]ARRIVE-4-1
+[  13.1260]ARRIVE-7-2
+[  13.1260]OPEN-7-2
+[  13.2050]ARRIVE-3-3
+[  13.2850]ARRIVE-8-5
+[  13.5050]ARRIVE-5-6
+[  13.5050]OPEN-5-6
+[  13.5370]ARRIVE-3-1
+[  13.5370]IN-18-7-2
+[  13.5370]CLOSE-7-2
+[  13.6160]ARRIVE-2-3
+[  13.6160]OPEN-2-3
+[  13.6950]ARRIVE-7-5
+[  13.9150]IN-17-5-6
+[  13.9150]CLOSE-5-6
+[  13.9470]ARRIVE-2-1
+[  13.9480]ARRIVE-8-2
+[  13.9480]OPEN-8-2
+[  14.0260]IN-56-2-3
+[  14.0260]CLOSE-2-3
+[  14.1040]ARRIVE-6-5
+[  14.1040]OPEN-6-5
+[  14.3250]ARRIVE-4-6
+[  14.3560]ARRIVE-1-1
+[  14.3560]OPEN-1-1
+[  14.3570]OUT-18-8-2
+[  14.3570]CLOSE-8-2
+[  14.4350]ARRIVE-3-3
+[  14.5140]OUT-5-6-5
+[  14.5140]IN-55-6-5
+[  14.5140]CLOSE-6-5
+[  14.7340]ARRIVE-3-6
+[  14.7580]OUT-46-1-1
+[  14.7580]CLOSE-1-1
+[  14.7660]ARRIVE-9-2
+[  14.8450]ARRIVE-4-3
+[  14.9230]ARRIVE-5-5
+[  14.9230]OPEN-5-5
+[  15.1440]ARRIVE-2-6
+[  15.1760]ARRIVE-10-2
+[  15.1760]OPEN-10-2
+[  15.2550]ARRIVE-5-3
+[  15.3340]OUT-70-5-5
+[  15.3340]CLOSE-5-5
+[  15.5510]ARRIVE-1-6
+[  15.5510]OPEN-1-6
+[  15.5830]OUT-16-10-2
+[  15.5830]CLOSE-10-2
+[  15.6590]ARRIVE-6-3
+[  15.6590]OPEN-6-3
+[  15.7380]ARRIVE-4-5
+[  15.7380]OPEN-4-5
+[  15.9570]OUT-17-1-6
+[  15.9570]CLOSE-1-6
+[  16.0680]OUT-56-6-3
+[  16.0680]CLOSE-6-3
+[  16.1460]OUT-55-4-5
+[  16.1460]CLOSE-4-5
+[  16.4720]ARRIVE-7-3
+[  16.4720]OPEN-7-3
+[  16.8830]IN-50-7-3
+[  16.8830]CLOSE-7-3
+[  17.2840]ARRIVE-8-3
+[  17.2840]OPEN-8-3
+[  17.6910]OUT-50-8-3
+[  17.6910]CLOSE-8-3
