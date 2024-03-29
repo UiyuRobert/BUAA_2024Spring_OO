@@ -2,9 +2,10 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.locks.LockSupport;
 
 public class RequestQueue { // 注意线程安全
-    private boolean endTag; // 结束标志
+    private boolean endTag = false; // 结束标志
     private ArrayList<Request> requestQueue;
 
     public RequestQueue() {
@@ -21,7 +22,7 @@ public class RequestQueue { // 注意线程安全
             try {
                 wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
         if (requestQueue.isEmpty()) {
@@ -35,23 +36,15 @@ public class RequestQueue { // 注意线程安全
 
     public synchronized Request getOneRequestByFromFloorAndRemove(int curFloor,
                                                                   boolean moveDirection) {
+        if (requestQueue.isEmpty()) {
+            return null;
+        }
         Iterator<Request> iterator = requestQueue.iterator();
         while (iterator.hasNext()) {
             Request request = iterator.next();
             if (request.getFromFloor() == curFloor && request.getMoveDirection() == moveDirection) {
                 iterator.remove();
-                return request;
-            }
-        }
-        return null;
-    }
-
-    public synchronized Request getOneRequestByToFloorAndRemove(int curFloor) {
-        Iterator<Request> iterator = requestQueue.iterator();
-        while (iterator.hasNext()) {
-            Request request = iterator.next();
-            if (request.getToFloor() == curFloor) {
-                iterator.remove();
+                notifyAll();
                 return request;
             }
         }
@@ -63,8 +56,14 @@ public class RequestQueue { // 注意线程安全
         notifyAll();
     }
 
+    public synchronized void addRequestAndNotify(Request request, Thread thread) {
+        requestQueue.add(request);
+        LockSupport.unpark(thread);
+    }
+
     public synchronized void setEnd(boolean endTag) {
         this.endTag = endTag;
+        notifyAll();
     }
 
     public synchronized boolean isEmpty() {

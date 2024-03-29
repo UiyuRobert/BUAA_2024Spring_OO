@@ -7,11 +7,13 @@ import com.oocourse.elevator1.PersonRequest;
 
 import java.io.IOException;
 
-public class InputProcess implements Runnable {
+public class InputProcess extends Thread {
     private RequestQueue waitQueue;
+    private Thread scheduler;
 
-    public InputProcess(RequestQueue waitQueue) {
+    public InputProcess(RequestQueue waitQueue, Thread scheduler) {
         this.waitQueue = waitQueue;
+        this.scheduler = scheduler;
     }
 
     @Override

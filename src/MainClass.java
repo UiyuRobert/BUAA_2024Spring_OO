@@ -11,17 +11,20 @@ public class MainClass {
         TimableOutput.initStartTimestamp(); // 初始化
         RequestQueue totalQueue = new RequestQueue(); // 总候乘表
         ArrayList<RequestQueue> queues = new ArrayList<>(); // 六个电梯各自的候乘表
-        Runnable inputProcess = new InputProcess(totalQueue); // 输入处理
+        ArrayList<Thread> threads = new ArrayList<>(); // 六部电梯
         for (int i = 1; i < 7; i++) {
-            RequestQueue processQueue = new RequestQueue();
+            RequestQueue processQueue = new RequestQueue(); // 各个电梯的待处理队伍
             queues.add(processQueue);
-            RequestQueue passengers = new RequestQueue();
-            Thread elevator = new Elevator(processQueue, passengers, i);
+
+            Thread elevator = new Elevator(processQueue, i);
+            threads.add(elevator);
             elevator.start();
         }
-        Scheduler scheduler = new Scheduler(totalQueue, queues);
+
+        Scheduler scheduler = new Scheduler(totalQueue, queues, threads);
         scheduler.start();
-        Thread input = new Thread(inputProcess);
+
+        Thread input = new InputProcess(totalQueue, scheduler);
         input.start();
     }
 }

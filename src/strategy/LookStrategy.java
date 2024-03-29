@@ -3,20 +3,20 @@ package strategy;
 import controller.Request;
 import controller.RequestQueue;
 
+import java.util.ArrayList;
+
 public class LookStrategy {
     private RequestQueue processingQueue; // 处理中队列
-    private RequestQueue passengerQueue; // 乘客队列
+    private ArrayList<Request> passengerQueue; // 乘客队列
 
-    public LookStrategy(RequestQueue processingQueue, RequestQueue passengerQueue) {
+    public LookStrategy(RequestQueue processingQueue, ArrayList<Request> passengerQueue) {
         this.processingQueue = processingQueue;
         this.passengerQueue = passengerQueue;
     }
 
     public Advice getAdvice(int curFloor, boolean moveDirection) {
-        if (canOpenForOut(curFloor)) {
-            return Advice.OPENFOROUT;
-        } else if (canOpenForIn(curFloor, moveDirection)) {
-            return Advice.OPENFORIN;
+        if (canOpenForOut(curFloor) || canOpenForIn(curFloor, moveDirection)) {
+            return Advice.OPEN;
         }
         if (!passengerQueue.isEmpty()) {
             return Advice.MOVE;
@@ -37,7 +37,7 @@ public class LookStrategy {
     }
 
     public boolean canOpenForOut(int curFloor) {
-        for (Request request : passengerQueue.getRequestQueue()) {
+        for (Request request : passengerQueue) {
             if (request.getToFloor() == curFloor) {
                 return true;
             }
@@ -46,7 +46,7 @@ public class LookStrategy {
     }
 
     public boolean canOpenForIn(int curFloor, boolean moveDirection) {
-        if (passengerQueue.getRequestQueue().size() == 6) { // 人满了
+        if (passengerQueue.size() == 6) { // 人满了
             return false;
         } else {
             for (Request request : processingQueue.getRequestQueue()) {
