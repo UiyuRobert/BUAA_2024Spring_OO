@@ -65,6 +65,7 @@ public class Elevator extends Thread {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
         Request request = getOneRequestByToFloorAndRemove(curFloor);
         while (request != null) {
             TimableOutput.println("OUT-" +
@@ -72,13 +73,18 @@ public class Elevator extends Thread {
             request = getOneRequestByToFloorAndRemove(curFloor);
         }
 
-        request = requests.getOneRequestByFromFloorAndRemove(curFloor, moveDirection);
-        while (request != null && passengers.size() < 6) {
-            TimableOutput.println("IN-" + request.getPersonId()
-                    + "-" + curFloor + "-" + elevatorId);
-            passengers.add(request);
+        if (passengers.size() < 6) {
             request = requests.getOneRequestByFromFloorAndRemove(curFloor, moveDirection);
+            while (request != null && passengers.size() < 6) {
+                TimableOutput.println("IN-" + request.getPersonId()
+                        + "-" + curFloor + "-" + elevatorId);
+                passengers.add(request);
+                if (passengers.size() < 6) {
+                    request = requests.getOneRequestByFromFloorAndRemove(curFloor, moveDirection);
+                }
+            }
         }
+
         TimableOutput.println("CLOSE-" + curFloor + "-" + elevatorId);
     }
 
@@ -96,8 +102,9 @@ public class Elevator extends Thread {
 
     @Override
     public String toString() {
-        return "电梯里还有" + passengers.size() + "名乘客, " +
-                "待处理队伍是否为空 : " + requests.isEnd();
-
+        String passengerNum = "电梯里还有" + passengers.size() + "名乘客\n";
+        String waitNum = "等待人数为 " + requests.getRequestQueue().size() + "\n";
+        String moveDir = "移动方向为" + moveDirection + "\n";
+        return passengerNum + waitNum + moveDir;
     }
 }
