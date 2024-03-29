@@ -12,12 +12,11 @@
     <list default="true" id="3704279a-26a9-4c1d-9187-f5bca5661904" name="更改" comment="1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/HW_5_jar/HW_5.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/HW_5_jar/HW_5.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/HW_5_jar/ans.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/HW_5_jar/ans.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/HW_5_jar/stdin.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/HW_5_jar/stdin.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW_5/controller/RequestQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_5/controller/RequestQueue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW_5/MainClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_5/MainClass.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HW_5/servicer/Elevator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_5/servicer/Elevator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servicer/Elevator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servicer/Elevator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/strategy/LookStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategy/LookStrategy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +102,7 @@
       <workItem from="1711590236652" duration="6663000" />
       <workItem from="1711605691526" duration="468000" />
       <workItem from="1711674008907" duration="20550000" />
-      <workItem from="1711701383781" duration="11960000" />
+      <workItem from="1711701383781" duration="13722000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />

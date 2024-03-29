@@ -2,7 +2,6 @@ package strategy;
 
 import controller.Request;
 import controller.RequestQueue;
-
 import java.util.ArrayList;
 
 public class LookStrategy {
@@ -49,25 +48,29 @@ public class LookStrategy {
         if (passengerQueue.size() == 6) { // 人满了
             return false;
         } else {
+            synchronized (passengerQueue) {
+                for (Request request : processingQueue.getRequestQueue()) {
+                    if (request.getFromFloor() == curFloor &&
+                            request.getMoveDirection() == moveDirection) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+    }
+
+    public boolean hasReqInOriginDirection(int curFloor, boolean moveDirection) {
+        synchronized (processingQueue) {
             for (Request request : processingQueue.getRequestQueue()) {
-                if (request.getFromFloor() == curFloor &&
-                    request.getMoveDirection() == moveDirection) {
+                if (request.getFromFloor() > curFloor && moveDirection) {
+                    return true;
+                } else if (request.getFromFloor() < curFloor && !moveDirection) {
                     return true;
                 }
             }
             return false;
         }
-    }
-
-    public boolean hasReqInOriginDirection(int curFloor, boolean moveDirection) {
-        for (Request request : processingQueue.getRequestQueue()) {
-            if (request.getFromFloor() > curFloor && moveDirection) {
-                return true;
-            } else if (request.getFromFloor() < curFloor && !moveDirection) {
-                return true;
-            }
-        }
-        return false;
     }
 
 }

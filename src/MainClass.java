@@ -15,7 +15,7 @@ public class MainClass {
             RequestQueue processQueue = new RequestQueue(); // 各个电梯的待处理队伍
             queues.add(processQueue);
 
-            Thread elevator = new Elevator(processQueue, i);
+            Elevator elevator = new Elevator(processQueue, i);
             elevator.start();
             try {
                 sleep(100);
