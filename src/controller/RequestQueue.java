@@ -45,6 +45,7 @@ public class RequestQueue { // 注意线程安全
             if (request.getFromFloor() == curFloor && request.getMoveDirection() == moveDirection) {
                 iterator.remove();
                 notifyAll();
+                // System.out.println(Thread.currentThread() + "remove personID:" + request.getPersonId());
                 return request;
             }
         }

@@ -5,13 +5,12 @@ import java.util.ArrayList;
 public class Scheduler extends Thread {
     private final RequestQueue waitQueue;
     private final ArrayList<RequestQueue> processingQueues;
-    private final ArrayList<Thread> threads;
+    // private final ArrayList<Thread> threads;
 
-    public Scheduler(RequestQueue waitQueue, ArrayList<RequestQueue> processingQueues,
-                     ArrayList<Thread> threads) {
+    public Scheduler(RequestQueue waitQueue, ArrayList<RequestQueue> processingQueues) {
         this.waitQueue = waitQueue;
         this.processingQueues = processingQueues;
-        this.threads = threads;
+        // this.threads = threads;
     }
 
     @Override

@@ -66,19 +66,15 @@ public class Elevator extends Thread {
             throw new RuntimeException(e);
         }
 
-        Request request = getOneRequestByToFloorAndRemove(curFloor);
-        while (request != null) {
-            TimableOutput.println("OUT-" +
-                    request.getPersonId() + "-" + curFloor + "-" + elevatorId);
-            request = getOneRequestByToFloorAndRemove(curFloor);
-        }
+        finishRequestsByToFloorAndRemove(curFloor);
 
         if (passengers.size() < 6) {
-            request = requests.getOneRequestByFromFloorAndRemove(curFloor, moveDirection);
+            Request request = requests.getOneRequestByFromFloorAndRemove(curFloor, moveDirection);
             while (request != null && passengers.size() < 6) {
                 TimableOutput.println("IN-" + request.getPersonId()
                         + "-" + curFloor + "-" + elevatorId);
                 passengers.add(request);
+                // System.out.println(Thread.currentThread() + "add personID:" + request.getPersonId());
                 if (passengers.size() < 6) {
                     request = requests.getOneRequestByFromFloorAndRemove(curFloor, moveDirection);
                 }
@@ -100,11 +96,24 @@ public class Elevator extends Thread {
         return null;
     }
 
+    public void finishRequestsByToFloorAndRemove(int curFloor) {
+        Iterator<Request> iterator = passengers.iterator();
+        while (iterator.hasNext()) {
+            Request request = iterator.next();
+            if (request.getToFloor() == curFloor) {
+                iterator.remove();
+                TimableOutput.println("OUT-" +
+                        request.getPersonId() + "-" + curFloor + "-" + elevatorId);
+            }
+        }
+    }
+
     @Override
     public String toString() {
+        String eleID = "电梯 ID 为" + currentThread().getName() + "\n";
         String passengerNum = "电梯里还有" + passengers.size() + "名乘客\n";
         String waitNum = "等待人数为 " + requests.getRequestQueue().size() + "\n";
         String moveDir = "移动方向为" + moveDirection + "\n";
-        return passengerNum + waitNum + moveDir;
+        return eleID + passengerNum + waitNum + moveDir;
     }
 }

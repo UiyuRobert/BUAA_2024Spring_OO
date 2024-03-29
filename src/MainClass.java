@@ -21,7 +21,7 @@ public class MainClass {
             elevator.start();
         }
 
-        Scheduler scheduler = new Scheduler(totalQueue, queues, threads);
+        Scheduler scheduler = new Scheduler(totalQueue, queues);
         scheduler.start();
 
         Thread input = new InputProcess(totalQueue, scheduler);
