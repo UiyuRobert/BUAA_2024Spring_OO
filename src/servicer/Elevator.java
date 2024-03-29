@@ -69,14 +69,15 @@ public class Elevator extends Thread {
         finishRequestsByToFloorAndRemove(curFloor);
         synchronized (requests) {
             if (passengers.size() < 6) {
-                Request request = requests.getOneRequestByFromFloorAndRemove(curFloor, moveDirection);
+                Request request = requests.getOneRequestByFromFloorAndRemove(curFloor,
+                        moveDirection);
                 while (request != null && passengers.size() < 6) {
                     TimableOutput.println("IN-" + request.getPersonId()
                             + "-" + curFloor + "-" + elevatorId);
                     passengers.add(request);
-                    // System.out.println(Thread.currentThread() + "add personID:" + request.getPersonId());
                     if (passengers.size() < 6) {
-                        request = requests.getOneRequestByFromFloorAndRemove(curFloor, moveDirection);
+                        request = requests.getOneRequestByFromFloorAndRemove(curFloor,
+                                moveDirection);
                     }
                 }
             }
