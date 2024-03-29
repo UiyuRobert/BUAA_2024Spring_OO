@@ -68,10 +68,12 @@ public class RequestQueue { // 注意线程安全
     }
 
     public synchronized boolean isEmpty() {
+        notifyAll();
         return requestQueue.isEmpty();
     }
 
     public synchronized boolean isEnd() {
+        notifyAll();
         return endTag;
     }
 
