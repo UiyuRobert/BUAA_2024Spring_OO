@@ -73,7 +73,7 @@ public class Elevator extends Thread {
         }
 
         request = requests.getOneRequestByFromFloorAndRemove(curFloor, moveDirection);
-        while (request != null && passengers.size() <= 6) {
+        while (request != null && passengers.size() < 6) {
             TimableOutput.println("IN-" + request.getPersonId()
                     + "-" + curFloor + "-" + elevatorId);
             passengers.add(request);
