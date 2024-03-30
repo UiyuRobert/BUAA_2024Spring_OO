@@ -4,7 +4,6 @@ import io.InputProcess;
 import servicer.Elevator;
 import com.oocourse.elevator1.TimableOutput;
 import java.util.ArrayList;
-import static java.lang.Thread.sleep;
 
 public class MainClass {
     public static void main(String[] args) {
@@ -17,11 +16,6 @@ public class MainClass {
 
             Elevator elevator = new Elevator(processQueue, i);
             elevator.start();
-            try {
-                sleep(100);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
         }
 
         Scheduler scheduler = new Scheduler(totalQueue, queues);

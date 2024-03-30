@@ -48,7 +48,7 @@ public class LookStrategy {
         if (passengerQueue.size() == 6) { // 人满了
             return false;
         } else {
-            synchronized (passengerQueue) {
+            synchronized (processingQueue) {
                 for (Request request : processingQueue.getRequestQueue()) {
                     if (request.getFromFloor() == curFloor &&
                             request.getMoveDirection() == moveDirection) {

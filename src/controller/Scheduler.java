@@ -27,6 +27,8 @@ public class Scheduler extends Thread {
                 continue;
             }
             int elevatorId = request.getElevatorId();
+            // System.out.println("\t\t\t\t\t ID 为 " +request.getPersonId()
+            // + " 的人进入 ID 为 " + elevatorId + " 的电梯");
             if (elevatorId == 1) {
                 processingQueues.get(0).addRequest(request);
             } else if (elevatorId == 2) {

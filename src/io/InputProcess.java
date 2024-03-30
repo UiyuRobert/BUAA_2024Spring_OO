@@ -36,6 +36,7 @@ public class InputProcess extends Thread {
                 int elevatorId = personRequest.getElevatorId();
                 Request request = new Request(requestId,fromFloor,toFloor,elevatorId);
                 waitQueue.addRequest(request);
+                // System.out.println("\t\t\t\t\t ID 为" +request.getPersonId() + "的人进入总候乘表");
             }
         }
     }

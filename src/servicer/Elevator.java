@@ -29,7 +29,10 @@ public class Elevator extends Thread {
     @Override
     public void run() {
         while (true) {
-            Advice advice = strategy.getAdvice(curFloor, moveDirection);
+            Advice advice;
+            synchronized (requests) {
+                advice = strategy.getAdvice(curFloor, moveDirection);
+            }
             if (advice == Advice.OVER) {
                 return;
             } else if (advice == Advice.MOVE) {
@@ -103,6 +106,9 @@ public class Elevator extends Thread {
             Request request = iterator.next();
             if (request.getToFloor() == curFloor) {
                 iterator.remove();
+                // System.out.println("\t\t\t\t\t ID 为 " +request.getPersonId() +
+                // " 的人离开 ID 为 " + elevatorId + " 的电梯");
+
                 TimableOutput.println("OUT-" +
                         request.getPersonId() + "-" + curFloor + "-" + elevatorId);
             }
