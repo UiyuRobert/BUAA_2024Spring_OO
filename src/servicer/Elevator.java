@@ -85,7 +85,7 @@ public class Elevator extends Thread {
             if (personRequest.getToFloor() != curFloor) {
                 PersonRequest newPerson = new PersonRequest(curFloor,
                         personRequest.getToFloor(), personRequest.getPersonId());
-                exitHalfwayPassengers.addRequestButNotNotify(newPerson);
+                exitHalfwayPassengers.addRequest(newPerson);
             }
             iterator.remove();
             status.finishOneRequest();

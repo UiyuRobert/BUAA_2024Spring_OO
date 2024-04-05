@@ -33,7 +33,6 @@ public class Scheduler extends Thread {
                     processingQueues.get(i).setEnd(true);
                     exitHalfwayQueues.get(i).setEnd(true);
                 }
-                processingQueues.get(0).wake();
                 return;
             }
 
@@ -75,11 +74,10 @@ public class Scheduler extends Thread {
                 }
                 while (!exitHalfwayPassengers.isEmpty()) {
                     PersonRequest personRequest = exitHalfwayPassengers.getOneRequestAndRemove();
-                    totalQueue.addRequestButNotNotify(personRequest);
+                    totalQueue.addRequest(personRequest);
                 }
             }
         }
-        totalQueue.wake();
     }
 
     public double calculatePriority(ElevatorStatus status, int waitNum) {
