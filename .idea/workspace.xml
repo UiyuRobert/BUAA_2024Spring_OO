@@ -13,12 +13,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/HW_5_jar/HW_5.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/HW_5_jar/HW_5.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/HW_5_jar/stdin.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/HW_5_jar/stdin.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW_5/controller/Scheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_5/controller/Scheduler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW_5/servicer/Elevator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_5/servicer/Elevator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW_5/servicer/ElevatorStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_5/servicer/ElevatorStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Scheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servicer/Elevator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servicer/Elevator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servicer/ElevatorStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servicer/ElevatorStatus.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,27 +67,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Study/OO/Unit_2/elevator2.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "工件",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true",
-    "应用程序.MainClass.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Study/OO/Unit_2/hw6&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;工件&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;应用程序.MainClass.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -110,7 +104,8 @@
       <workItem from="1711701383781" duration="16144000" />
       <workItem from="1711784711124" duration="3225000" />
       <workItem from="1712191358402" duration="30544000" />
-      <workItem from="1712282062240" duration="27301000" />
+      <workItem from="1712282062240" duration="28883000" />
+      <workItem from="1712318628778" duration="637000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
