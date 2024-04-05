@@ -8,6 +8,7 @@ public class ElevatorStatus {
     private int fullLoadLimit; // 满载人数
     private int currentLoadCount; // 当前乘客数
     private boolean reset;
+    private boolean over;
     private ResetRequest resetInfo;
 
     public ElevatorStatus(int moveOneFloorTime, boolean moveDirection,
@@ -18,6 +19,7 @@ public class ElevatorStatus {
         this.currentLoadCount = currentLoadCount;
         this.resetInfo = null;
         reset = false;
+        over = false;
     }
 
     public long getMoveOneFloorTime() {
@@ -66,6 +68,12 @@ public class ElevatorStatus {
 
     public synchronized void setReset(boolean reset) {
         this.reset = reset;
+        notifyAll();
+    }
+
+    public synchronized void setOver() {
+        over = true;
+        notifyAll();
     }
 
     @Override

@@ -43,6 +43,7 @@ public class Elevator extends Thread {
                 }
             }
             if (advice == Advice.OVER) {
+                // System.out.println("elevator : " + elevatorId + " out");
                 return;
             } else if (advice == Advice.MOVE) {
                 move();

@@ -32,7 +32,9 @@ public class Scheduler extends Thread {
                 for (int i = 0; i < processingQueues.size(); i++) {
                     processingQueues.get(i).setEnd(true);
                     exitHalfwayQueues.get(i).setEnd(true);
+                    runningStates.get(i).setOver();
                 }
+                // System.out.println("scheduler out");
                 return;
             }
 
