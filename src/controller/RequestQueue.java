@@ -32,6 +32,10 @@ public class RequestQueue<T> {
         requestQueue.add(request);
     }
 
+    public synchronized void wake() {
+        notifyAll();
+    }
+
     public synchronized T getOneRequestAndRemove() {
         if (requestQueue.isEmpty() && !endTag) {
             try {

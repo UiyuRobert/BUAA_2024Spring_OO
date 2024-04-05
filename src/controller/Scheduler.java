@@ -74,21 +74,19 @@ public class Scheduler extends Thread {
                 }
                 while (!exitHalfwayPassengers.isEmpty()) {
                     PersonRequest personRequest = exitHalfwayPassengers.getOneRequestAndRemove();
-                    totalQueue.addRequest(personRequest);
+                    totalQueue.addRequestButNotNotify(personRequest);
                 }
             }
         }
+        totalQueue.wake();
     }
 
     public double calculatePriority(ElevatorStatus status, int waitNum) {
-        double spaceCount = 0.3 * (1 -
-                ((double) status.getCurrentLoadCount() / status.getFullLoadLimit()));
-        double waitCount = Math.exp(-1.0 * waitNum / status.getFullLoadLimit());
-        double speedCount = 2.1 - 3.5 * status.getMoveOneFloorTime() / 1000;
         if (status.isReset()) {
-            return 0.7 * (speedCount + spaceCount + waitCount);
+            return 0.0;
         }
-        return speedCount + spaceCount + waitCount;
+        return Math.log(1000.0 * status.getFullLoadLimit() / status.getMoveOneFloorTime())
+                * Math.exp(-status.getCurrentLoadCount() - waitNum);
     }
 
     public boolean isElevatorResetting() {

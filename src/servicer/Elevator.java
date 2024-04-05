@@ -78,12 +78,6 @@ public class Elevator extends Thread {
     public void cleanPassengers() {
         TimableOutput.println("OPEN-" + curFloor + "-" + elevatorId);
 
-        try {
-            sleep(400);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
         Iterator<PersonRequest> iterator = passengers.iterator();
         while (iterator.hasNext()) {
             PersonRequest personRequest = iterator.next();
@@ -98,6 +92,13 @@ public class Elevator extends Thread {
             TimableOutput.println("OUT-" +
                     personRequest.getPersonId() + "-" + curFloor + "-" + elevatorId);
         }
+
+        try {
+            sleep(400);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         exitHalfwayPassengers.wake();
 
         TimableOutput.println("CLOSE-" + curFloor + "-" + elevatorId);
