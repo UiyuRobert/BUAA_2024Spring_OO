@@ -33,6 +33,7 @@ public class Scheduler extends Thread {
                     processingQueues.get(i).setEnd(true);
                     exitHalfwayQueues.get(i).setEnd(true);
                 }
+                processingQueues.get(0).wake();
                 return;
             }
 

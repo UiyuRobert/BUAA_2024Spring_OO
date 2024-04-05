@@ -6,7 +6,6 @@ import io.InputProcess;
 import servicer.Elevator;
 import com.oocourse.elevator2.TimableOutput;
 import servicer.ElevatorStatus;
-
 import java.util.ArrayList;
 
 public class MainClass {
