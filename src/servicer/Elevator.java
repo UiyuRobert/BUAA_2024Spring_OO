@@ -1,28 +1,33 @@
 package servicer;
 
-import controller.Request;
-import controller.RequestQueue;
+import com.oocourse.elevator2.PersonRequest;
+import controller.PersonRequestQueue;
 import strategy.Advice;
 import strategy.LookStrategy;
-import com.oocourse.elevator1.TimableOutput;
+import com.oocourse.elevator2.TimableOutput;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Elevator extends Thread {
     private LookStrategy strategy; // 采取的策略
-    private boolean moveDirection; // 移动方向，0 -> down ; 1 -> up
-    private ArrayList<Request> passengers; // 乘客
-    private RequestQueue requests; // 待处理
-    private int elevatorId; // 当前电梯ID
+    private final ElevatorStatus status;
+    private ArrayList<PersonRequest> passengers; // 乘客
+    private final PersonRequestQueue exitHalfwayPassengers; //
+    private final PersonRequestQueue requests; // 待处理
+    private final int elevatorId; // 当前电梯ID
     private int curFloor; // 当前所在楼层
+    // private boolean moveDirection; // 移动方向，0 -> down ; 1 -> up
 
-    public Elevator(RequestQueue requests, int elevatorId) {
+    public Elevator(PersonRequestQueue requests, int elevatorId,
+                    PersonRequestQueue exitHalfwayPassengers) {
         this.elevatorId = elevatorId;
         this.passengers = new ArrayList<>();
         this.requests = requests;
+        this.exitHalfwayPassengers = exitHalfwayPassengers;
         this.strategy = new LookStrategy(this.requests, this.passengers);
-        this.moveDirection = true;
+        this.status = new ElevatorStatus(400, true,
+                6, 0);
         this.curFloor = 1;
     }
 
@@ -31,14 +36,17 @@ public class Elevator extends Thread {
         while (true) {
             Advice advice;
             synchronized (requests) {
-                advice = strategy.getAdvice(curFloor, moveDirection);
+                advice = strategy.getAdvice(curFloor, status.getMoveDirection());
+                if (checkReset()) {
+                    continue;
+                }
             }
             if (advice == Advice.OVER) {
                 return;
             } else if (advice == Advice.MOVE) {
                 move();
             } else if (advice == Advice.UTURN) {
-                moveDirection = !moveDirection;
+                status.reverseMoveDirection();
             } else if (advice == Advice.WAIT) {
                 requests.waitRequest();
             } else if (advice == Advice.OPEN) {
@@ -47,13 +55,68 @@ public class Elevator extends Thread {
         }
     }
 
-    public void move() {
+    public boolean checkReset() {
+        if (status.isReset()) {
+            if (!passengers.isEmpty()) {
+                cleanPassengers();
+            }
+            TimableOutput.println("RESET_BEGIN-" + elevatorId);
+            cleanRequests();
+            try {
+                sleep(1200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            status.resetStatus();
+            TimableOutput.println("RESET_END-" + elevatorId);
+            return true;
+        }
+        return false;
+    }
+
+    public void cleanPassengers() {
+        TimableOutput.println("OPEN-" + curFloor + "-" + elevatorId);
+
         try {
-            this.sleep(400);
+            sleep(400);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        if (moveDirection) {
+
+        Iterator<PersonRequest> iterator = passengers.iterator();
+        while (iterator.hasNext()) {
+            PersonRequest personRequest = iterator.next();
+            iterator.remove();
+
+            if (personRequest.getToFloor() != curFloor) {
+                PersonRequest newPerson = new PersonRequest(curFloor,
+                        personRequest.getToFloor(), personRequest.getPersonId());
+                exitHalfwayPassengers.addRequestButNotNotify(newPerson);
+            }
+            status.finishOneRequest();
+            TimableOutput.println("OUT-" +
+                    personRequest.getPersonId() + "-" + curFloor + "-" + elevatorId);
+        }
+        exitHalfwayPassengers.wake();
+
+        TimableOutput.println("CLOSE-" + curFloor + "-" + elevatorId);
+    }
+
+    public void cleanRequests() {
+        // 已有请求
+        while (!requests.isEmpty()) {
+            PersonRequest personRequest = requests.getOnePersonAndRemoveNoWait();
+            exitHalfwayPassengers.addRequest(personRequest);
+        }
+    }
+
+    public void move() {
+        try {
+            this.sleep(status.getMoveOneFloorTime());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        if (status.getMoveDirection()) {
             curFloor++;
         } else {
             curFloor--;
@@ -71,16 +134,17 @@ public class Elevator extends Thread {
 
         finishRequestsByToFloorAndRemove(curFloor);
         synchronized (requests) {
-            if (passengers.size() < 6) {
-                Request request = requests.getOneRequestByFromFloorAndRemove(curFloor,
-                        moveDirection);
-                while (request != null && passengers.size() < 6) {
-                    TimableOutput.println("IN-" + request.getPersonId()
+            if (passengers.size() < status.getFullLoadLimit()) {
+                PersonRequest personRequest = requests.getOneRequestByFromFloorAndRemove(curFloor,
+                        status.getMoveDirection());
+                while (personRequest != null && passengers.size() < status.getFullLoadLimit()) {
+                    TimableOutput.println("IN-" + personRequest.getPersonId()
                             + "-" + curFloor + "-" + elevatorId);
-                    passengers.add(request);
-                    if (passengers.size() < 6) {
-                        request = requests.getOneRequestByFromFloorAndRemove(curFloor,
-                                moveDirection);
+                    passengers.add(personRequest);
+                    status.addOnePerson();
+                    if (passengers.size() < status.getFullLoadLimit()) {
+                        personRequest = requests.getOneRequestByFromFloorAndRemove(curFloor,
+                                status.getMoveDirection());
                     }
                 }
             }
@@ -88,31 +152,21 @@ public class Elevator extends Thread {
         TimableOutput.println("CLOSE-" + curFloor + "-" + elevatorId);
     }
 
-    public Request getOneRequestByToFloorAndRemove(int curFloor) {
-        Iterator<Request> iterator = passengers.iterator();
+    public void finishRequestsByToFloorAndRemove(int curFloor) {
+        Iterator<PersonRequest> iterator = passengers.iterator();
         while (iterator.hasNext()) {
-            Request request = iterator.next();
-            if (request.getToFloor() == curFloor) {
+            PersonRequest personRequest = iterator.next();
+            if (personRequest.getToFloor() == curFloor) {
                 iterator.remove();
-                return request;
+                status.finishOneRequest();
+                TimableOutput.println("OUT-" +
+                        personRequest.getPersonId() + "-" + curFloor + "-" + elevatorId);
             }
         }
-        return null;
     }
 
-    public void finishRequestsByToFloorAndRemove(int curFloor) {
-        Iterator<Request> iterator = passengers.iterator();
-        while (iterator.hasNext()) {
-            Request request = iterator.next();
-            if (request.getToFloor() == curFloor) {
-                iterator.remove();
-                // System.out.println("\t\t\t\t\t ID 为 " +request.getPersonId() +
-                // " 的人离开 ID 为 " + elevatorId + " 的电梯");
-
-                TimableOutput.println("OUT-" +
-                        request.getPersonId() + "-" + curFloor + "-" + elevatorId);
-            }
-        }
+    public synchronized ElevatorStatus getStatus() {
+        return this.status;
     }
 
     @Override
@@ -120,7 +174,8 @@ public class Elevator extends Thread {
         String eleID = "电梯 ID 为" + currentThread().getName() + "\n";
         String passengerNum = "电梯里还有" + passengers.size() + "名乘客\n";
         String waitNum = "等待人数为 " + requests.getRequestQueue().size() + "\n";
-        String moveDir = "移动方向为" + moveDirection + "\n";
-        return eleID + passengerNum + waitNum + moveDir;
+        String moveDir = "移动方向为" + status.getMoveDirection() + "\n";
+        String sta = "status: " + status.toString();
+        return eleID + passengerNum + waitNum + moveDir + sta;
     }
 }

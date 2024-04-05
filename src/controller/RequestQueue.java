@@ -1,23 +1,38 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.locks.LockSupport;
 
-public class RequestQueue { // 注意线程安全
+public class RequestQueue<T> {
     private boolean endTag = false; // 结束标志
-    private ArrayList<Request> requestQueue;
+    private ArrayList<T> requestQueue;
 
     public RequestQueue() {
-        endTag = false;
+        this.endTag = false;
         this.requestQueue = new ArrayList<>();
     }
 
-    public synchronized ArrayList<Request> getRequestQueue() {
+    public boolean getEndTag() {
+        return endTag;
+    }
+
+    public synchronized ArrayList<T> getRequestQueue() {
         return requestQueue;
     }
 
-    public synchronized Request getOneRequestAndRemove() {
+    public int getSize() {
+        return requestQueue.size();
+    }
+
+    public synchronized void addRequest(T request) { // 新增一个请求
+        requestQueue.add(request);
+        notifyAll();
+    }
+
+    public synchronized void addRequestButNotNotify(T request) {
+        requestQueue.add(request);
+    }
+
+    public synchronized T getOneRequestAndRemove() {
         if (requestQueue.isEmpty() && !endTag) {
             try {
                 wait();
@@ -28,42 +43,10 @@ public class RequestQueue { // 注意线程安全
         if (requestQueue.isEmpty()) {
             return null;
         }
-        Request request = requestQueue.get(0);
+        T request = requestQueue.get(0);
         requestQueue.remove(0);
         notifyAll();
         return request;
-    }
-
-    public synchronized Request getOneRequestByFromFloorAndRemove(int curFloor,
-                                                                  boolean moveDirection) {
-        if (requestQueue.isEmpty()) {
-            return null;
-        }
-        Iterator<Request> iterator = requestQueue.iterator();
-        while (iterator.hasNext()) {
-            Request request = iterator.next();
-            if (request.getFromFloor() == curFloor && request.getMoveDirection() == moveDirection) {
-                iterator.remove();
-                notifyAll();
-                return request;
-            }
-        }
-        return null;
-    }
-
-    public synchronized void addRequest(Request request) { // 新增一个请求
-        requestQueue.add(request);
-        notifyAll();
-    }
-
-    public synchronized void addRequestAndNotify(Request request, Thread thread) {
-        requestQueue.add(request);
-        LockSupport.unpark(thread);
-    }
-
-    public synchronized void setEnd(boolean endTag) {
-        this.endTag = endTag;
-        notifyAll();
     }
 
     public synchronized boolean isEmpty() {
@@ -76,11 +59,8 @@ public class RequestQueue { // 注意线程安全
         return endTag;
     }
 
-    public synchronized void waitRequest() {
-        try {
-            wait();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+    public synchronized void setEnd(boolean endTag) {
+        this.endTag = endTag;
+        notifyAll();
     }
 }

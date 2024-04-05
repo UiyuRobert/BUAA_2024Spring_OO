@@ -14,7 +14,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../elevator1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../elevator2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
