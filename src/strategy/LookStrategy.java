@@ -2,16 +2,21 @@ package strategy;
 
 import com.oocourse.elevator2.PersonRequest;
 import controller.PersonRequestQueue;
+import servicer.ElevatorStatus;
+
 import java.util.ArrayList;
 
 public class LookStrategy {
     private PersonRequestQueue processingQueue; // 处理中队列
     private ArrayList<PersonRequest> passengerQueue; // 乘客队列
+    private ElevatorStatus elevatorStatus;
 
     public LookStrategy(PersonRequestQueue processingQueue,
-                        ArrayList<PersonRequest> passengerQueue) {
+                        ArrayList<PersonRequest> passengerQueue,
+                        ElevatorStatus elevatorStatus) {
         this.processingQueue = processingQueue;
         this.passengerQueue = passengerQueue;
+        this.elevatorStatus = elevatorStatus;
     }
 
     public Advice getAdvice(int curFloor, boolean moveDirection) {
@@ -46,7 +51,7 @@ public class LookStrategy {
     }
 
     public boolean canOpenForIn(int curFloor, boolean moveDirection) {
-        if (passengerQueue.size() == 6) { // 人满了
+        if (passengerQueue.size() == elevatorStatus.getFullLoadLimit()) { // 人满了
             return false;
         } else {
             synchronized (processingQueue) {

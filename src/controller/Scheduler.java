@@ -28,7 +28,7 @@ public class Scheduler extends Thread {
         while (true) {
             reAddPerson();
 
-            if (totalQueue.isEmpty() && totalQueue.isEnd()) {
+            if (totalQueue.isEmpty() && totalQueue.isEnd() && !isElevatorResetting()) {
                 for (int i = 0; i < processingQueues.size(); i++) {
                     processingQueues.get(i).setEnd(true);
                     exitHalfwayQueues.get(i).setEnd(true);
@@ -91,4 +91,12 @@ public class Scheduler extends Thread {
         return speedCount + spaceCount + waitCount;
     }
 
+    public boolean isElevatorResetting() {
+        for (ElevatorStatus status : runningStates) {
+            if (status.isReset()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

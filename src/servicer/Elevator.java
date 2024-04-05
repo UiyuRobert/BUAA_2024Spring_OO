@@ -25,9 +25,10 @@ public class Elevator extends Thread {
         this.passengers = new ArrayList<>();
         this.requests = requests;
         this.exitHalfwayPassengers = exitHalfwayPassengers;
-        this.strategy = new LookStrategy(this.requests, this.passengers);
         this.status = new ElevatorStatus(400, true,
                 6, 0);
+        this.strategy = new LookStrategy(this.requests, this.passengers, this.status);
+
         this.curFloor = 1;
     }
 
@@ -86,13 +87,13 @@ public class Elevator extends Thread {
         Iterator<PersonRequest> iterator = passengers.iterator();
         while (iterator.hasNext()) {
             PersonRequest personRequest = iterator.next();
-            iterator.remove();
 
             if (personRequest.getToFloor() != curFloor) {
                 PersonRequest newPerson = new PersonRequest(curFloor,
                         personRequest.getToFloor(), personRequest.getPersonId());
                 exitHalfwayPassengers.addRequestButNotNotify(newPerson);
             }
+            iterator.remove();
             status.finishOneRequest();
             TimableOutput.println("OUT-" +
                     personRequest.getPersonId() + "-" + curFloor + "-" + elevatorId);

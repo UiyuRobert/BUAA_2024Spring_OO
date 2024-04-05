@@ -10,26 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3704279a-26a9-4c1d-9187-f5bca5661904" name="更改" comment="1">
-      <change afterPath="$PROJECT_DIR$/src/controller/PersonRequestQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servicer/ElevatorStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/HW_5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HW_5.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/HW_5_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/HW_5_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/HW_5_jar/HW_5.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/HW_5_jar/HW_5.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/HW_5_jar/ans.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/HW_5_jar/ans.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/HW_5_jar/stdin.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/HW_5_jar/stdin.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW_5/MainClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_5/MainClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW_5/controller/Request.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW_5/controller/RequestQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_5/controller/RequestQueue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW_5/controller/Scheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_5/controller/Scheduler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW_5/io/InputProcess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_5/io/InputProcess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW_5/servicer/Elevator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_5/servicer/Elevator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW_5/strategy/LookStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_5/strategy/LookStrategy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Request.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/RequestQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/RequestQueue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Scheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/io/InputProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/InputProcess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servicer/Elevator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servicer/Elevator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/strategy/LookStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategy/LookStrategy.java" afterDir="false" />
     </list>
@@ -123,7 +105,7 @@
       <workItem from="1711701383781" duration="16144000" />
       <workItem from="1711784711124" duration="3225000" />
       <workItem from="1712191358402" duration="30544000" />
-      <workItem from="1712282062240" duration="12534000" />
+      <workItem from="1712282062240" duration="15853000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
