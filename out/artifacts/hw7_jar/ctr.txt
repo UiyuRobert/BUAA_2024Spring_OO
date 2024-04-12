@@ -1,0 +1,2 @@
+cd D:\Study\OO\Unit_2\hw7\out\artifacts\hw7_jar
+.\datainput_student_win64.exe | java -jar hw7.jar >ans.txt
