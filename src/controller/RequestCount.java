@@ -23,6 +23,7 @@ public class RequestCount {
     }
 
     public synchronized int getCnt() {
+        // System.out.println("cnt: " + cnt);
         return cnt;
     }
 }

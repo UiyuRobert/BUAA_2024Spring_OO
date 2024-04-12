@@ -48,13 +48,12 @@ public class Scheduler extends Thread {
     @Override
     public void run() {
         while (true) {
-            // reAddPerson();
 
             if (!isElevatorRunning()) {
                 totalQueue.setRunningEnd(true);
             }
 
-            if (totalQueue.isEnd() && count.getCnt() == 0 && !isElevatorResetting()) {
+            if (totalQueue.isEnd() && !isElevatorResetting() && count.getCnt() == 0) {
                 for (int i = 0; i < processingQueues.size(); i++) {
                     processingQueues.get(i).setEnd(true);
                     runningStates.get(i).setOver();
@@ -62,7 +61,7 @@ public class Scheduler extends Thread {
                 for (RequestQueue<PersonRequest> doubleCarQueue : doubleCarQueues.values()) {
                     doubleCarQueue.setEnd(true);
                 }
-                // System.out.println(getName() + " over");
+               // System.out.println(getName() + " over");
                 return;
             }
 
@@ -151,26 +150,11 @@ public class Scheduler extends Thread {
         elevatorStatus.setResetInfo(request);
         elevatorStatus.setReset(2);
         elevatorStatus.setOccupied(occupied);
-        processingQueues.get(request.getElevatorId() - 1).wake();
+        processingQueues.get(elevatorId - 1).wake();
 
 
         transferFloor.put(elevatorId, request.getTransferFloor());
         createDoubleCarElevator(elevatorId, occupied, request);
-    }
-
-    public void reAddPerson() {
-        for (int i = 0; i < exitHalfwayQueues.size(); i++) {
-            RequestQueue<PersonRequest> exitHalfwayPassengers = exitHalfwayQueues.get(i);
-            synchronized (exitHalfwayPassengers) {
-                if (exitHalfwayPassengers.isEmpty()) {
-                    continue;
-                }
-                while (!exitHalfwayPassengers.isEmpty()) {
-                    PersonRequest personRequest = exitHalfwayPassengers.getOneRequestAndRemove();
-                    totalQueue.addRequest(personRequest);
-                }
-            }
-        }
     }
 
     private void createDoubleCarElevator(int elevatorId, Flag occupied,

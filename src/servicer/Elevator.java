@@ -77,12 +77,21 @@ public class Elevator extends Thread {
     public void transfer() {
         TimableOutput.println("OPEN-" + curFloor + "-" + getName());
 
+        status.wake();
+
         if (!passengers.isEmpty()) {
             cleanPassengers();
-
         }
         status.reverseMoveDirection();
         requestEnterByFromFloor();
+
+        try {
+            sleep(400);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        status.wake();
 
         TimableOutput.println("CLOSE-" + curFloor + "-" + getName());
 
@@ -96,6 +105,15 @@ public class Elevator extends Thread {
             if (!passengers.isEmpty()) {
                 TimableOutput.println("OPEN-" + curFloor + "-" + getName());
                 cleanPassengers();
+
+                try {
+                    sleep(400);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+                status.wake();
+
                 TimableOutput.println("CLOSE-" + curFloor + "-" + getName());
             }
             TimableOutput.println("RESET_BEGIN-" + elevatorId);
@@ -140,15 +158,6 @@ public class Elevator extends Thread {
         }
 
         count.finish(sum - halfWay);
-
-        try {
-            sleep(400);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-        // exitHalfwayPassengers.wake();
-        status.wake();
 
     }
 
@@ -246,6 +255,7 @@ public class Elevator extends Thread {
                 count.finish();
             }
         }
+        totalQueue.wake();
     }
 
     public ElevatorStatus getStatus() {

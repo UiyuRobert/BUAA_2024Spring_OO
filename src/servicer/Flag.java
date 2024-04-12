@@ -12,16 +12,16 @@ public class Flag {
     public synchronized void setOccupied() {
         waitRelease();
         state = State.OCCUPIED;
-        notifyAll();
+        notify();
     }
 
     public synchronized void setRelease() {
         this.state = State.UNOCCUPIED;
-        notifyAll();
+        notify();
     }
 
     private synchronized void waitRelease() {
-        notifyAll();
+        notify();
         while (state == State.OCCUPIED) {
             try {
                 wait();
