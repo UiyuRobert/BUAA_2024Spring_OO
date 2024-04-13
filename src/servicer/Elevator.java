@@ -197,10 +197,13 @@ public class Elevator extends Thread {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        int moveDir = 0;
         if (status.getMoveDirection()) {
             curFloor++;
+            moveDir = 1;
         } else {
             curFloor--;
+            moveDir = -1;
         }
 
         if (elevatorType == ELEVATOR_TYPE_D && curFloor == status.getTransferFloor()) {
@@ -212,7 +215,7 @@ public class Elevator extends Thread {
         TimableOutput.println("ARRIVE-" + curFloor + "-" + getName());
 
         if (elevatorType == ELEVATOR_TYPE_D &&
-                Math.abs(curFloor - status.getTransferFloor()) == 1) {
+                curFloor - moveDir == status.getTransferFloor()) {
             synchronized (occupied) {
                 occupied.setRelease();
             }

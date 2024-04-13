@@ -11,18 +11,17 @@ public class Flag {
 
     public synchronized void setOccupied() {
         waitRelease();
-        // TimableOutput.println("enter transferFloor");
         state = State.OCCUPIED;
         notifyAll();
     }
 
     public synchronized void setRelease() {
         this.state = State.UNOCCUPIED;
+        // TimableOutput.println(Thread.currentThread().getName() + " release the lock");
         notifyAll();
     }
 
     private synchronized void waitRelease() {
-        // TimableOutput.println("wait transferFloor");
         notifyAll();
         while (state == State.OCCUPIED) {
             try {
@@ -31,5 +30,6 @@ public class Flag {
                 throw new RuntimeException(e);
             }
         }
+        // TimableOutput.println(Thread.currentThread().getName() + " get the lock");
     }
 }
