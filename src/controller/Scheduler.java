@@ -26,7 +26,7 @@ public class Scheduler extends Thread {
     // 换乘楼层, 电梯id - 楼层
     private final HashMap<Integer, RequestQueue<PersonRequest>> doubleCarQueues = new HashMap<>();
     // 电梯ID - 电梯ID-B 的已分配请求队列
-    private HashMap<Integer, Flag> occupies = new HashMap<>();
+    private HashMap<Integer, Flag> occupies;
 
     public Scheduler(RequestQueue<Request> totalQueue,
                      ArrayList<RequestQueue<PersonRequest>> processingQueues,
@@ -45,6 +45,7 @@ public class Scheduler extends Thread {
         for (int i = 1; i < 7; i++) {
             transferFloor.put(i, 0);
         }
+
     }
 
     @Override
@@ -67,8 +68,9 @@ public class Scheduler extends Thread {
                 return;
             }
 
+            // System.out.println(2);
             Request request = totalQueue.getOneTotalRequestAndRemove();
-
+            // System.out.println("3");
 
             if (request == null) {
                 continue;

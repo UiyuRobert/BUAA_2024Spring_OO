@@ -11,17 +11,19 @@ public class Flag {
 
     public synchronized void setOccupied() {
         waitRelease();
+        // TimableOutput.println("enter transferFloor");
         state = State.OCCUPIED;
-        notify();
+        notifyAll();
     }
 
     public synchronized void setRelease() {
         this.state = State.UNOCCUPIED;
-        notify();
+        notifyAll();
     }
 
     private synchronized void waitRelease() {
-        notify();
+        // TimableOutput.println("wait transferFloor");
+        notifyAll();
         while (state == State.OCCUPIED) {
             try {
                 wait();

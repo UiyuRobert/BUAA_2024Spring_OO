@@ -79,19 +79,17 @@ public class Elevator extends Thread {
     public void transfer() {
         TimableOutput.println("OPEN-" + curFloor + "-" + getName());
 
-        status.wake();
+        try {
+            sleep(400);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
         if (!passengers.isEmpty()) {
             cleanPassengers();
         }
         status.reverseMoveDirection();
         requestEnterByFromFloor();
-
-        try {
-            sleep(400);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
 
         status.wake();
 
@@ -202,12 +200,15 @@ public class Elevator extends Thread {
         } else {
             curFloor--;
         }
+
         if (elevatorType == ELEVATOR_TYPE_D && curFloor == status.getTransferFloor()) {
             synchronized (occupied) {
                 occupied.setOccupied();
             }
         }
+
         TimableOutput.println("ARRIVE-" + curFloor + "-" + getName());
+
         if (elevatorType == ELEVATOR_TYPE_D &&
                 Math.abs(curFloor - status.getTransferFloor()) == 1) {
             synchronized (occupied) {
