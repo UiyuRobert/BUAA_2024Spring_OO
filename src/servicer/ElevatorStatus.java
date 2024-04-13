@@ -8,7 +8,6 @@ public class ElevatorStatus {
     private static final int NORMALRESET = 1;
     private static final int DCRESET = 2;
     private static final int NOTRESET = 0;
-    private Flag occupied;
     private long moveOneFloorTime; // 移动一层需要的时间 ms
     private boolean moveDirection; // 移动方向
     private int fullLoadLimit; // 满载人数
@@ -66,14 +65,6 @@ public class ElevatorStatus {
     public synchronized int getTransferFloor() {
         notifyAll();
         return transferFloor;
-    }
-
-    public void setOccupied(Flag occupied) {
-        this.occupied = occupied;
-    }
-
-    public Flag getOccupied() {
-        return occupied;
     }
 
     public synchronized int getReset() {

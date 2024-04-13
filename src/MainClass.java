@@ -7,7 +7,10 @@ import io.InputProcess;
 import servicer.Elevator;
 import com.oocourse.elevator3.TimableOutput;
 import servicer.ElevatorStatus;
+import servicer.Flag;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainClass {
     public static void main(String[] args) {
@@ -24,6 +27,8 @@ public class MainClass {
 
         RequestCount count = new RequestCount();
 
+        HashMap<Integer, Flag> occupies = new HashMap<>();
+
         for (int i = 1; i < 7; i++) {
             RequestQueue<PersonRequest> processQueue = new RequestQueue<>(); // 各个电梯的待处理队伍
             queues.add(processQueue);
@@ -31,19 +36,21 @@ public class MainClass {
             ArrayList<PersonRequest> passengers = new ArrayList<>();
 
             RequestQueue<PersonRequest> exitHalfwayPassengers = new RequestQueue<>();
+            Flag occupied = new Flag();
             Elevator elevator = new Elevator(processQueue, i,
-                    exitHalfwayPassengers, passengers, totalQueue, count);
+                    exitHalfwayPassengers, passengers, occupied, totalQueue, count);
             elevator.setName("" + i);
             elevator.setNormalStatus();
 
             runningStates.add(elevator.getStatus());
+            occupies.put(i, occupied);
             passengerQueues.add(passengers);
             exitHalfwayQueues.add(exitHalfwayPassengers);
             elevator.start();
         }
 
         Scheduler scheduler = new Scheduler(totalQueue, queues, runningStates,
-                exitHalfwayQueues, passengerQueues, count);
+                exitHalfwayQueues, passengerQueues, count, occupies);
         scheduler.setName("scheduler");
         scheduler.start();
 

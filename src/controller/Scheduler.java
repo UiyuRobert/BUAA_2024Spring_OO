@@ -26,19 +26,21 @@ public class Scheduler extends Thread {
     // 换乘楼层, 电梯id - 楼层
     private final HashMap<Integer, RequestQueue<PersonRequest>> doubleCarQueues = new HashMap<>();
     // 电梯ID - 电梯ID-B 的已分配请求队列
+    private HashMap<Integer, Flag> occupies = new HashMap<>();
 
     public Scheduler(RequestQueue<Request> totalQueue,
                      ArrayList<RequestQueue<PersonRequest>> processingQueues,
                      ArrayList<ElevatorStatus> runningStates,
                      ArrayList<RequestQueue<PersonRequest>> exitHalfwayQueues,
                      ArrayList<ArrayList<PersonRequest>> passengerQueues,
-                     RequestCount count) {
+                     RequestCount count, HashMap<Integer, Flag> occupies) {
         this.totalQueue = totalQueue;
         this.processingQueues = processingQueues;
         this.runningStates = runningStates;
         this.exitHalfwayQueues = exitHalfwayQueues;
         this.passengerQueues = passengerQueues;
         this.count = count;
+        this.occupies = occupies;
 
         for (int i = 1; i < 7; i++) {
             transferFloor.put(i, 0);
@@ -61,11 +63,12 @@ public class Scheduler extends Thread {
                 for (RequestQueue<PersonRequest> doubleCarQueue : doubleCarQueues.values()) {
                     doubleCarQueue.setEnd(true);
                 }
-               // System.out.println(getName() + " over");
+                // System.out.println(getName() + " over");
                 return;
             }
 
             Request request = totalQueue.getOneTotalRequestAndRemove();
+
 
             if (request == null) {
                 continue;
@@ -144,17 +147,16 @@ public class Scheduler extends Thread {
 
     public void processDoubleCarReset(DoubleCarResetRequest request) {
         int elevatorId = request.getElevatorId();
-        Flag occupied = new Flag();
         ElevatorStatus elevatorStatus = runningStates.get(elevatorId - 1);
 
         elevatorStatus.setResetInfo(request);
+        elevatorStatus.setTransferFloor(request.getTransferFloor());
         elevatorStatus.setReset(2);
-        elevatorStatus.setOccupied(occupied);
         processingQueues.get(elevatorId - 1).wake();
 
 
         transferFloor.put(elevatorId, request.getTransferFloor());
-        createDoubleCarElevator(elevatorId, occupied, request);
+        createDoubleCarElevator(elevatorId, occupies.get(elevatorId), request);
     }
 
     private void createDoubleCarElevator(int elevatorId, Flag occupied,
@@ -167,13 +169,12 @@ public class Scheduler extends Thread {
 
         ElevatorStatus elevatorStatus = new ElevatorStatus((int)(request.getSpeed() * 1000), true,
                 request.getCapacity(), 0);
-        elevatorStatus.setOccupied(occupied);
         elevatorStatus.setTransferFloor(request.getTransferFloor());
         ArrayList<PersonRequest> passengers = new ArrayList<>();
         passengerQueues.add(passengers);
 
         Elevator elevator = new Elevator(newQueue, elevatorId,
-                newExitHalfway, passengers, totalQueue, count);
+                newExitHalfway, passengers, occupied, totalQueue, count);
         elevator.setName(elevatorId + "-B");
         elevator.setDoubleCarStatus(elevatorStatus);
 

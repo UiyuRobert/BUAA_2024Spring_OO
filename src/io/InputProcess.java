@@ -32,7 +32,9 @@ public class InputProcess extends Thread {
                 return;
             } else {
                 if (request instanceof PersonRequest) {
-                    count.addCnt();
+                    synchronized (count) {
+                        count.addCnt();
+                    }
                 }
                 requestQueue.addRequest(request);
             }

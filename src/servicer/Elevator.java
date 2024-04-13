@@ -20,6 +20,7 @@ public class Elevator extends Thread {
     private Strategy strategy; // 采取的策略
     private ElevatorStatus status;
     private RequestCount count;
+    private Flag occupied;
     private final ArrayList<PersonRequest> passengers; // 乘客
     private final RequestQueue<PersonRequest> exitHalfwayPassengers; //
     private final RequestQueue<PersonRequest> requests; // 待处理
@@ -29,7 +30,7 @@ public class Elevator extends Thread {
 
     public Elevator(RequestQueue<PersonRequest> requests, int elevatorId,
                     RequestQueue<PersonRequest> exitHalfwayPassengers,
-                    ArrayList<PersonRequest> passengers,
+                    ArrayList<PersonRequest> passengers, Flag occupied,
                     RequestQueue<Request> totalQueue, RequestCount count) {
         this.elevatorId = elevatorId;
         this.passengers = passengers;
@@ -37,6 +38,7 @@ public class Elevator extends Thread {
         this.exitHalfwayPassengers = exitHalfwayPassengers;
         this.totalQueue = totalQueue;
         this.count = count;
+        this.occupied = occupied;
 
         this.curFloor = 1;
     }
@@ -157,7 +159,9 @@ public class Elevator extends Thread {
             status.finishOneRequest();
         }
 
-        count.finish(sum - halfWay);
+        synchronized (count) {
+            count.finish(sum - halfWay);
+        }
 
     }
 
@@ -199,12 +203,16 @@ public class Elevator extends Thread {
             curFloor--;
         }
         if (elevatorType == ELEVATOR_TYPE_D && curFloor == status.getTransferFloor()) {
-            status.getOccupied().setOccupied();
+            synchronized (occupied) {
+                occupied.setOccupied();
+            }
         }
         TimableOutput.println("ARRIVE-" + curFloor + "-" + getName());
         if (elevatorType == ELEVATOR_TYPE_D &&
                 Math.abs(curFloor - status.getTransferFloor()) == 1) {
-            status.getOccupied().setRelease();
+            synchronized (occupied) {
+                occupied.setRelease();
+            }
         }
     }
 
@@ -252,7 +260,9 @@ public class Elevator extends Thread {
                 status.finishOneRequest();
                 TimableOutput.println("OUT-" +
                         personRequest.getPersonId() + "-" + curFloor + "-" + getName());
-                count.finish();
+                synchronized (count) {
+                    count.finish();
+                }
             }
         }
         totalQueue.wake();
