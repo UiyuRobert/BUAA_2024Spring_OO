@@ -52,7 +52,7 @@ public class Scheduler extends Thread {
     public void run() {
         while (true) {
 
-            if (!isElevatorRunning()) {
+            if (count.getCnt() == 0) {
                 totalQueue.setRunningEnd(true);
             }
 

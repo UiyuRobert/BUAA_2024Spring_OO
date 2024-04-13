@@ -79,6 +79,8 @@ public class Elevator extends Thread {
     public void transfer() {
         TimableOutput.println("OPEN-" + curFloor + "-" + getName());
 
+        status.wake();
+
         try {
             sleep(400);
         } catch (InterruptedException e) {
@@ -123,15 +125,15 @@ public class Elevator extends Thread {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            status.resetStatus();
             if (resetType == 2) { // DCReset, -> A
                 elevatorType = ELEVATOR_TYPE_D;
                 curFloor = status.getTransferFloor() - 1;
                 status.setMoveDirection(false);
                 setName(elevatorId + "-A");
             }
-
             TimableOutput.println("RESET_END-" + elevatorId);
+
+            status.resetStatus();
         }
     }
 
