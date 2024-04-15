@@ -1,4 +1,0 @@
-[1.0]RESET-Elevator-1-8-0.3
-[1.5]RESET-Elevator-3-7-0.2
-[2.2]RESET-Elevator-2-7-0.6
-[2.5]RESET-Elevator-6-5-0.5
