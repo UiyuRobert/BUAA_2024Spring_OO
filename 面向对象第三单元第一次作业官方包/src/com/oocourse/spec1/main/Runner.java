@@ -200,6 +200,7 @@ public class Runner {
                 }
             }
         }
+        sc.nextLine();
         System.out.println("Ok");
     }
 }
