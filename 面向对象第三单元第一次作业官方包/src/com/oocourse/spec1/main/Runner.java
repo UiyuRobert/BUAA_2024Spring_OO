@@ -193,7 +193,7 @@ public class Runner {
                 int value = sc.nextInt();
                 if (value != 0) {
                     try {
-                        network.addRelation(ids[i], ids[j + 1], value);
+                        network.addRelation(ids[i + 1], ids[j], value);
                     } catch (Exception e) {
                         throw new RuntimeException("Unreachable");
                     }
