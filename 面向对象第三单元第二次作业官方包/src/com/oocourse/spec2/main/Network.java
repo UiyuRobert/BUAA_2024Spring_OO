@@ -181,10 +181,10 @@ public interface Network {
       @          personId1!=personId2      &&
       @          getPerson(personId2).isLinked(getPerson(personId1)) &&
       @          getPerson(personId2).containsTag(tagId) &&
-      @          !getPerson(personId2).getTag(tagId).hasPerson(getPerson(personId)) &&
+      @          !getPerson(personId2).getTag(tagId).hasPerson(getPerson(personId1)) &&
       @          getPerson(personId2).getTag(tagId).persons.length <= 1111;
       @ assignable getPerson(personId2).getTag(tagId).persons;
-      @ ensures getPerson(personId2).getTag(tagId).hasPerson(getPerson(personId));
+      @ ensures getPerson(personId2).getTag(tagId).hasPerson(getPerson(personId1));
       @ also
       @ public normal_behavior
       @ requires containsPerson(personId1) &&
@@ -192,14 +192,14 @@ public interface Network {
       @          personId1!=personId2      &&
       @          getPerson(personId2).isLinked(getPerson(personId1)) &&
       @          getPerson(personId2).containsTag(tagId) &&
-      @          !getPerson(personId2).getTag(tagId).hasPerson(getPerson(personId)) &&
+      @          !getPerson(personId2).getTag(tagId).hasPerson(getPerson(personId1)) &&
       @          getPerson(personId2).getTag(tagId).persons.length > 1111;
       @ assignable \nothing
       @ also
       @ public exceptional_behavior
       @ signals (PersonIdNotFoundException e) !containsPerson(personId1);
-      @ signals (PersonIdNotFoundException e) !containsPerson(personId1) &&
-      @                                       containsPerson(personId2);
+      @ signals (PersonIdNotFoundException e) containsPerson(personId1) &&
+      @                                       !containsPerson(personId2);
       @ signals (EqualPersonIdException e)    containsPerson(personId1) &&
       @                                       containsPerson(personId2) &&
       @                                       personId1==personId2 ;
