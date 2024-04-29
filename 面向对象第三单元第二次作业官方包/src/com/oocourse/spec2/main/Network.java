@@ -252,7 +252,7 @@ public interface Network {
       @          getPerson(personId2).containsTag(tagId) &&
       @          getPerson(personId2).getTag(tagId).hasPerson(getPerson(personId1));
       @ assignable getPerson(personId2).getTag(tagId).persons;
-      @ ensures !getTag(tagId).hasPerson(getPerson(personId1));
+      @ ensures !getPerson(personId2).getTag(tagId).hasPerson(getPerson(personId1));
       @ also
       @ public exceptional_behavior
       @ signals (PersonIdNotFoundException e) !containsPerson(personId1);
