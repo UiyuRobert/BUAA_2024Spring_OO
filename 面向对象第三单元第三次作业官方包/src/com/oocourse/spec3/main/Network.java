@@ -383,7 +383,7 @@ public interface Network {
       @          !getMessage(id).getPerson1().containsTag(getMessage(id).getTag().getId());
       @*/
     public /*@ safe @*/ void sendMessage(int id) throws
-            RelationNotFoundException, MessageIdNotFoundException, PersonIdNotFoundException;
+            RelationNotFoundException, MessageIdNotFoundException, TagIdNotFoundException;
 
     /*@ public normal_behavior
       @ requires containsPerson(id);

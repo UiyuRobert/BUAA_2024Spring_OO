@@ -466,7 +466,7 @@ public class Runner {
         } catch (MessageIdNotFoundException e) {
             e.print();
             return;
-        } catch (PersonIdNotFoundException e) {
+        } catch (TagIdNotFoundException e) {
             e.print();
             return;
         }
