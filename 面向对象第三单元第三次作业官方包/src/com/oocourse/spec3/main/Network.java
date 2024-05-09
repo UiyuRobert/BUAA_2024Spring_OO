@@ -262,7 +262,7 @@ public interface Network {
       @          getPerson(personId2).containsTag(tagId) &&
       @          getPerson(personId2).getTag(tagId).hasPerson(getPerson(personId1));
       @ assignable getPerson(personId2).getTag(tagId).persons;
-      @ ensures !getTag(tagId).hasPerson(getPerson(personId1));
+      @ ensures !getPerson(personId2).getTag(tagId).hasPerson(getPerson(personId1));
       @ also
       @ public exceptional_behavior
       @ signals (PersonIdNotFoundException e) !containsPerson(personId1);
@@ -311,7 +311,7 @@ public interface Network {
       @                                       (message instanceof EmojiMessage) &&
       @                                       !containsEmojiId(((EmojiMessage) message).getEmojiId());
       @ signals (EqualPersonIdException e) !containsMessage(message.getId()) &&
-      @                                     ((message instanceof EmojiMessage) ==>
+      @                                     (message instanceof EmojiMessage) ==>
       @                                     containsEmojiId(((EmojiMessage) message).getEmojiId())) &&
       @                                     message.getType() == 0 &&
       @                                     message.getPerson1().equals(message.getPerson2());
@@ -357,15 +357,15 @@ public interface Network {
       @ ensures \old(getMessage(id)).getPerson2().getMessages().size() == \old(getMessage(id).getPerson2().getMessages().size()) + 1;
       @ also
       @ public normal_behavior
-      @ requires containsMessage(id) && getMessage(id).getType() == 1 &&
-      @           getMessage(id).getTag().hasPerson(getMessage(id).getPerson1());
+      @ requires containsMessage(id) && getMessage(id).getType() == 1 && 
+      @           getMessage(id).getPerson1().containsTag(getMessage(id).getTag().getId());
       @ assignable persons[*], messages, emojiHeatList[*];
       @ ensures !containsMessage(id)
       @ ensures \old(getMessage(id)).getPerson1().getSocialValue() ==
       @         \old(getMessage(id).getPerson1().getsocialValue())+ \old(getMessage(id)).getsocialValue();
       @ ensures (\forall Person p; \old(getMessage(id)).getTag().hasPerson(p); p.getSocialValue() ==
       @         \old(p.getSocialValue()) + \old(getMessage(id)).getSocialValue());
-      @ ensures (\old(getMessage(id)) instanceof RedEnvelopeMessage) ==>
+      @ ensures (\old(getMessage(id)) instanceof RedEnvelopeMessage) && (\old(getMessage(id)).getTag().getSize() > 0) ==>
       @          (\exists int i; i == ((RedEnvelopeMessage)\old(getMessage(id))).getMoney()/\old(getMessage(id)).getTag().getSize();
       @           \old(getMessage(id)).getPerson1().getMoney() ==
       @           \old(getMessage(id).getPerson1().getMoney()) - i*\old(getMessage(id)).getTag().getSize() &&
@@ -379,8 +379,8 @@ public interface Network {
       @ signals (MessageIdNotFoundException e) !containsMessage(id);
       @ signals (RelationNotFoundException e) containsMessage(id) && getMessage(id).getType() == 0 &&
       @          !(getMessage(id).getPerson1().isLinked(getMessage(id).getPerson2()));
-      @ signals (PersonIdNotFoundException e) containsMessage(id) && getMessage(id).getType() == 1 &&
-      @          !(getMessage(id).getTag().hasPerson(getMessage(id).getPerson1()));
+      @ signals (TagIdNotFoundException e) containsMessage(id) && getMessage(id).getType() == 1 &&
+      @          !getMessage(id).getPerson1().containsTag(getMessage(id).getTag().getId());
       @*/
     public /*@ safe @*/ void sendMessage(int id) throws
             RelationNotFoundException, MessageIdNotFoundException, PersonIdNotFoundException;
