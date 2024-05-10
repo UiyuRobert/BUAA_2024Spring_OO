@@ -459,7 +459,7 @@ public interface Network {
       @ ensures (\forall int i; 0 <= i && i < \old(messages.length);
       @          (!(\old(messages[i]) instanceof EmojiMessage) ==> \not_assigned(\old(messages[i])) &&
       @           (\exists int j; 0 <= j && j < messages.length; messages[j].equals(\old(messages[i])))));
-      @ ensures messages.length == (\num_of int i; 0 <= i && i <= \old(messages.length);
+      @ ensures messages.length == (\num_of int i; 0 <= i && i < \old(messages.length);
       @          (\old(messages[i]) instanceof EmojiMessage) ==>
       @           (containsEmojiId(\old(((EmojiMessage)messages[i]).getEmojiId()))));
       @ ensures \result == emojiIdList.length;
