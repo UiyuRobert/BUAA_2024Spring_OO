@@ -311,7 +311,7 @@ public interface Network {
       @                                       (message instanceof EmojiMessage) &&
       @                                       !containsEmojiId(((EmojiMessage) message).getEmojiId());
       @ signals (EqualPersonIdException e) !containsMessage(message.getId()) &&
-      @                                     (message instanceof EmojiMessage) ==>
+      @                                     ((message instanceof EmojiMessage) ==>
       @                                     containsEmojiId(((EmojiMessage) message).getEmojiId())) &&
       @                                     message.getType() == 0 &&
       @                                     message.getPerson1().equals(message.getPerson2());
