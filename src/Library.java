@@ -105,13 +105,13 @@ public class Library {
 
     private void query(LibraryRequest request) {
         LibraryBookId bookId = request.getBookId();
-        User student = getStudent(request.getStudentId());
+        // User student = getStudent(request.getStudentId());
         int numHas = 0;
-        int num = 0;
+        // int num = 0;
         if (books.containsKey(bookId)) {
             numHas = books.get(bookId);
         }
-        if (bookId.isTypeB()) {
+        /* if (bookId.isTypeB()) {
             if (student.canBorrowOrOrderB()) {
                 num = Math.min(numHas, 1);
             }
@@ -119,8 +119,8 @@ public class Library {
             if (student.canBorrowOrOrderC(bookId)) {
                 num = Math.min(numHas, 1);
             }
-        }
-        System.out.println("[" + date + "] " + bookId + " " + num);
+        } */
+        System.out.println("[" + date + "] " + bookId + " " + numHas);
     }
 
     private void returnBook(LibraryRequest request) {
