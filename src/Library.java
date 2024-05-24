@@ -125,7 +125,8 @@ public class Library {
 
     private void returnBook(LibraryRequest request) {
         LibraryBookId bookId = request.getBookId();
-        circulationDesk.returnBook(bookId);
+        User student = getStudent(request.getStudentId());
+        circulationDesk.returnBook(bookId, student);
         LibrarySystem.PRINTER.accept(date, request);
     }
 

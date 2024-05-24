@@ -14,6 +14,11 @@ public class User {
         books = new HashMap<>();
     }
 
+    public void returnBook(LibraryBookId bookId) {
+        int num = books.get(bookId) - 1;
+        books.put(bookId, num);
+    }
+
     public int getBookNum(LibraryBookId bookId) {
         if (books.containsKey(bookId)) {
             return books.get(bookId);

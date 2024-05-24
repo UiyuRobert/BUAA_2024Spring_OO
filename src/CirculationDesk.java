@@ -45,7 +45,8 @@ public class CirculationDesk {
         }
     }
 
-    public void returnBook(LibraryBookId bookId) {
+    public void returnBook(LibraryBookId bookId, User student) {
+        student.returnBook(bookId);
         addOneBook(bookId);
     }
 
