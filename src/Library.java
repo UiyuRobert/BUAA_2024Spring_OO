@@ -56,7 +56,7 @@ public class Library {
 
     private void pick(LibraryRequest request) {
         LibraryBookId bookId = request.getBookId();
-        User student = students.get(request.getStudentId());
+        User student = getStudent(request.getStudentId());
         if (reservationDesk.pickOneBook(bookId, student)) {
             LibrarySystem.PRINTER.accept(date, request);
         } else {
@@ -105,7 +105,7 @@ public class Library {
 
     private void query(LibraryRequest request) {
         LibraryBookId bookId = request.getBookId();
-        User student = students.get(request.getStudentId());
+        User student = getStudent(request.getStudentId());
         int numHas = 0;
         int num = 0;
         if (books.containsKey(bookId)) {
@@ -120,7 +120,7 @@ public class Library {
                 num = Math.min(numHas, 1);
             }
         }
-        System.out.println(date + " " + bookId + " " + num);
+        System.out.println("[" + date + "] " + bookId + " " + num);
     }
 
     private void returnBook(LibraryRequest request) {

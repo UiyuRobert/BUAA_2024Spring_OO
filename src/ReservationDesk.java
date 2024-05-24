@@ -32,14 +32,14 @@ public class ReservationDesk {
 
     public boolean pickOneBook(LibraryBookId bookId, User student) {
         Iterator<Map.Entry<LibraryBookId, String>> iterator = arrived.iterator();
-        int index = -1;
+        Iterator<Order> orderIterator = timeTable.iterator();
         while (iterator.hasNext()) {
-            ++index;
             Map.Entry<LibraryBookId, String> entry = iterator.next();
+            orderIterator.next();
             if (entry.getKey().equals(bookId) && entry.getValue().equals(student.getId())) {
                 if (checkStuLimit(bookId, student)) {
                     iterator.remove();
-                    timeTable.remove(index);
+                    orderIterator.remove();
                     student.successBorrowBook(bookId);
                     return true;
                 }
@@ -50,16 +50,15 @@ public class ReservationDesk {
     }
 
     public void cleanOverTimeBooks(ArrayList<LibraryMoveInfo> moveInfos, LocalDate date) {
-        int index = -1;
         Iterator<Order> iterator = timeTable.iterator();
+        Iterator<Map.Entry<LibraryBookId, String>> arrivedIterator = arrived.iterator();
         while (iterator.hasNext()) {
             Order order = iterator.next();
-            ++index;
+            Map.Entry<LibraryBookId, String> entry = arrivedIterator.next();
             if (order.getResidenceTime(date) >= KEEPLIMIT) {
-                Map.Entry<LibraryBookId, String> entry = arrived.get(index);
                 moveInfos.add(new LibraryMoveInfo(entry.getKey(), "ao", "bs"));
                 iterator.remove();
-                arrived.remove(index);
+                arrivedIterator.remove();
             }
         }
     }
