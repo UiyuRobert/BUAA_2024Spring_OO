@@ -14,6 +14,13 @@ public class User {
         books = new HashMap<>();
     }
 
+    public int getBookNum(LibraryBookId bookId) {
+        if (books.containsKey(bookId)) {
+            return books.get(bookId);
+        }
+        return 0;
+    }
+
     public boolean canBorrowOrOrderB() {
         return !numB;
     }

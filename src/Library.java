@@ -105,9 +105,20 @@ public class Library {
 
     private void query(LibraryRequest request) {
         LibraryBookId bookId = request.getBookId();
+        User student = students.get(request.getStudentId());
+        int numHas = 0;
         int num = 0;
         if (books.containsKey(bookId)) {
-            num = books.get(bookId);
+            numHas = books.get(bookId);
+        }
+        if (bookId.isTypeB()) {
+            if (student.canBorrowOrOrderB()) {
+                num = Math.min(numHas, 1);
+            }
+        } else if (bookId.isTypeC()) {
+            if (student.canBorrowOrOrderC(bookId)) {
+                num = Math.min(numHas, 1);
+            }
         }
         System.out.println(date + " " + bookId + " " + num);
     }
