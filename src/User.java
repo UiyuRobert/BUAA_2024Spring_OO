@@ -15,6 +15,9 @@ public class User {
     }
 
     public void returnBook(LibraryBookId bookId) {
+        if (bookId.isTypeB()) {
+            numB = false;
+        }
         int num = books.get(bookId) - 1;
         books.put(bookId, num);
     }
