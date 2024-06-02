@@ -6,6 +6,8 @@ import com.oocourse.library2.LibraryOpenCmd;
 import com.oocourse.library2.LibraryReqCmd;
 import com.oocourse.library2.LibraryRequest;
 import com.oocourse.library2.LibrarySystem;
+import com.oocourse.library2.annotation.Trigger;
+
 import static com.oocourse.library2.LibrarySystem.PRINTER;
 
 import java.time.LocalDate;
@@ -30,6 +32,7 @@ public class Library {
         students = new HashMap<>();
     }
 
+    @Trigger(from = "InitState", to = "bs")
     public void run() {
         LibraryCommand command;
         while ((command = LibrarySystem.SCANNER.nextCommand()) != null) {
@@ -68,6 +71,7 @@ public class Library {
         }
     }
 
+    @Trigger(from = "user", to = "bdc")
     private void donate(LibraryReqCmd request) {
         LibraryBookId bookId = request.getBookId();
         driftCounter.donateOneBook(bookId);
@@ -94,6 +98,7 @@ public class Library {
         }
     }
 
+    @Trigger(from = "ao", to = "user")
     private void pick(LibraryReqCmd request) {
         LibraryBookId bookId = request.getBookId();
         User student = getStudent(request.getStudentId());
@@ -143,6 +148,7 @@ public class Library {
         PRINTER.move(date, moveInfos);
     }
 
+    @Trigger(from = "bdc", to = "bs")
     private void addBooks2BookShelf(Set<LibraryBookId> books2Add) {
         for (LibraryBookId bookId : books2Add) {
             books.put(bookId.toFormal(), 1);
@@ -150,6 +156,7 @@ public class Library {
         books2Add.clear();
     }
 
+    @Trigger(from = "bro", to = "bs")
     private void cleanUpWhenClose() {
         ArrayList<LibraryMoveInfo> moveInfos = new ArrayList<>();
         moveBooksFromBroToBs(moveInfos);
@@ -169,6 +176,7 @@ public class Library {
         PRINTER.info(request, numHas);
     }
 
+    @Trigger(from = "user", to = "bro")
     private void returnBook(LibraryReqCmd request) {
         LibraryBookId bookId = request.getBookId();
         User student = getStudent(request.getStudentId());
@@ -189,6 +197,7 @@ public class Library {
         return student;
     }
 
+    @Trigger(from = "bs", to = "user")
     private void borrow(LibraryReqCmd request) {
         LibraryBookId bookId = request.getBookId();
         User student = getStudent(request.getStudentId());
@@ -214,6 +223,7 @@ public class Library {
 
     }
 
+    @Trigger(from = "bs", to = "ao")
     private void order(LibraryReqCmd request) {
         LibraryBookId bookId = request.getBookId();
         if (!bookId.isFormal()) {
