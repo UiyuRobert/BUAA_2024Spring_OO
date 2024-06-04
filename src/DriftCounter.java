@@ -23,7 +23,7 @@ public class DriftCounter {
         books2Add.clear();
     }
 
-    public void successBorrow(LibraryBookId bookId) {
+    public void borrow(LibraryBookId bookId) {
         driftBooks.remove(bookId);
     }
 

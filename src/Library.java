@@ -214,11 +214,13 @@ public class Library {
         } else {
             if (driftCounter.canBeBorrowed(bookId)) {
                 boolean ret = circulationDesk.borrow(student, bookId, date);
+                driftCounter.borrow(bookId);
                 if (ret) {
-                    driftCounter.successBorrow(bookId);
                     PRINTER.accept(request);
                 } else { PRINTER.reject(request); }
-            } else { PRINTER.reject(request); }
+            } else {
+                PRINTER.reject(request);
+            }
         }
 
     }
