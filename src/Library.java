@@ -111,7 +111,7 @@ public class Library {
 
     @Trigger(from = "ao", to = "user")
     @SendMessage(from = "Library", to = "ReservationDesk")
-    private void pick(LibraryReqCmd request) {
+    public void pick(LibraryReqCmd request) {
         LibraryBookId bookId = request.getBookId();
         User student = getStudent(request.getStudentId());
         if (reservationDesk.getOrderedBook(bookId, student, date)) {
@@ -261,7 +261,7 @@ public class Library {
 
     @Trigger(from = "bs", to = "ao")
     @SendMessage(from = "Library", to = "ReservationDesk")
-    private void order(LibraryReqCmd request) {
+    public void order(LibraryReqCmd request) {
         LibraryBookId bookId = request.getBookId();
         User student = getStudent(request.getStudentId());
         if (!bookId.isFormal() || student.getCredits() < 0) {
