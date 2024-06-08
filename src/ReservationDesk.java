@@ -1,5 +1,7 @@
 import com.oocourse.library3.LibraryBookId;
 import com.oocourse.library3.LibraryMoveInfo;
+import com.oocourse.library3.annotation.SendMessage;
+
 import java.time.LocalDate;
 import java.util.AbstractMap;
 import java.util.ArrayList;
@@ -67,7 +69,8 @@ public class ReservationDesk {
         return false;
     }
 
-    public boolean pickOneBook(LibraryBookId bookId, User student, LocalDate date) {
+    @SendMessage(from = "ReservationDesk", to = "Library")
+    public boolean getOrderedBook(LibraryBookId bookId, User student, LocalDate date) {
         Iterator<Map.Entry<LibraryBookId, String>> iterator = arrived.iterator();
         Iterator<Order> orderIterator = timeTable.iterator();
         while (iterator.hasNext()) {
@@ -134,7 +137,8 @@ public class ReservationDesk {
         reservationTable.add(new AbstractMap.SimpleEntry<>(bookId, student.getId()));
     }
 
-    public boolean reserveOneBook(User student, LibraryBookId bookId) {
+    @SendMessage(from = "ReservationDesk", to = "Library")
+    public boolean orderNewBook(User student, LibraryBookId bookId) {
         if (bookId.isTypeA()) {
             return false;
         } else if (checkStuLimit(bookId, student) && !hasOrdered(student, bookId)) {

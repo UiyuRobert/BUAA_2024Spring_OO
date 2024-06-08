@@ -7,6 +7,7 @@ import com.oocourse.library3.LibraryQcsCmd;
 import com.oocourse.library3.LibraryReqCmd;
 import com.oocourse.library3.LibraryRequest;
 import com.oocourse.library3.LibrarySystem;
+import com.oocourse.library3.annotation.SendMessage;
 import com.oocourse.library3.annotation.Trigger;
 
 import static com.oocourse.library3.LibrarySystem.PRINTER;
@@ -109,10 +110,11 @@ public class Library {
     }
 
     @Trigger(from = "ao", to = "user")
+    @SendMessage(from = "Library", to = "ReservationDesk")
     private void pick(LibraryReqCmd request) {
         LibraryBookId bookId = request.getBookId();
         User student = getStudent(request.getStudentId());
-        if (reservationDesk.pickOneBook(bookId, student, date)) {
+        if (reservationDesk.getOrderedBook(bookId, student, date)) {
             PRINTER.accept(request);
         } else {
             PRINTER.reject(request);
@@ -258,6 +260,7 @@ public class Library {
     }
 
     @Trigger(from = "bs", to = "ao")
+    @SendMessage(from = "Library", to = "ReservationDesk")
     private void order(LibraryReqCmd request) {
         LibraryBookId bookId = request.getBookId();
         User student = getStudent(request.getStudentId());
@@ -265,7 +268,7 @@ public class Library {
             PRINTER.reject(request);
             return;
         }
-        boolean ret = reservationDesk.reserveOneBook(student, bookId);
+        boolean ret = reservationDesk.orderNewBook(student, bookId);
         if (ret) {
             PRINTER.accept(request);
         } else {
